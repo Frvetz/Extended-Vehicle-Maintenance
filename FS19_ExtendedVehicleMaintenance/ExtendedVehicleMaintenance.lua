@@ -132,6 +132,11 @@ function ExtendedVehicleMaintenance:onLoad(savegame)
 
 		spec.DifferenzDays = 0;
 		
+		-- costs
+		
+		spec.wartungsKosten = 0;
+		spec.wartungsKostenServer = 0;
+		
 		spec.dirtyFlag = self:getNextDirtyFlag()
 	end;
 	g_currentMission.missionInfo.automaticMotorStartEnabled = false
@@ -233,6 +238,12 @@ function ExtendedVehicleMaintenance:onReadUpdateStream(streamId, timestamp, conn
 			spec.WartezeitMinuten = streamReadInt32(streamId)
 			spec.DontAllowXmlNumberReset = streamReadBool(streamId)
 			spec.WartungKnopfGedrückt = streamReadBool(streamId)
+			spec.wartungsKostenServer = streamReadInt32(streamId)
+			if spec.wartungsKostenServer > 0 then 
+				spec.wartungsKosten = spec.wartungsKosten + spec.wartungsKostenServer
+				spec.wartungsKostenServer = 0
+			end
+			print("Wartung: Erhalten: "..tostring(spec.wartungsKosten))
 		end
 	end
 end
@@ -251,6 +262,9 @@ function ExtendedVehicleMaintenance:onWriteUpdateStream(streamId, connection, di
 				streamWriteInt32(streamId, spec.WartezeitMinuten)
 				streamWriteBool(streamId, spec.DontAllowXmlNumberReset)
 				streamWriteBool(streamId, spec.WartungKnopfGedrückt)
+				streamWriteInt32(streamId, spec.wartungsKostenServer)
+				print("Wartung: Gesendet: "..tostring(spec.wartungsKostenServer))
+				spec.wartungsKostenServer = 0
 			end
 		else 
 			streamWriteBool(streamId, false)
@@ -260,6 +274,8 @@ end
 
 function ExtendedVehicleMaintenance:onUpdate(dt, isActiveForInput, isActiveForInputIgnoreSelection, isSelected)
 
+	local spec = self.spec_ExtendedVehicleMaintenance
+	
     if g_directSellDialog.isOpen == true and g_directSellDialog.vehicle.spec_drivable ~= nil then
         g_directSellDialog.repairButton.disabled = true
     end
@@ -286,6 +302,11 @@ function ExtendedVehicleMaintenance:onUpdate(dt, isActiveForInput, isActiveForIn
 	end;
 	
 	if self.spec_motorized ~= nil then
+	
+		--print("onUpdate - Server: "..tostring(g_server ~= nil))
+		--print("onUpdate - Client: "..tostring(g_client ~= nil))
+	
+	
 		local changeFlag = false
 	    if self.isClient and isActiveForInputIgnoreSelection and self.spec_ExtendedVehicleMaintenance.DontAllowXmlNumberReset ~= true then
 	        self.spec_ExtendedVehicleMaintenance.BackupAgeXML = self.age
@@ -449,7 +470,26 @@ function ExtendedVehicleMaintenance:onUpdate(dt, isActiveForInput, isActiveForIn
 		if changeFlag then
 			self:raiseDirtyFlags(self.spec_ExtendedVehicleMaintenance.dirtyFlag)
 		end
+		
+		--print("Wartung: Spec existiert: "..tostring(spec ~= nil))
+		--if spec ~= nil then print("Wartung: Kosten: "..tostring(spec.wartungsKosten)); end
+		
+		if spec.wartungsKosten > 0 then
+			local farm = self.ownerFarmId
+			print("Wartung: FarmId: "..tostring(farm))
+			if g_server ~= nil then 
+				g_currentMission:addMoney(-spec.wartungsKosten, farm, MoneyType.OTHER, true, true);
+				print("Wartung: abgerechnet: "..tostring(spec.wartungsKosten))
+			else
+				spec.wartungsKostenServer = spec.wartungsKostenServer + spec.wartungsKosten
+				print("Wartung: an Server zu senden: "..tostring(spec.wartungsKostenServer))
+			end
+			g_currentMission:showBlinkingWarning(g_i18n:getText("warning_moneyChange", ExtendedVehicleMaintenance.l10nEnv):format(OriginalTime, spec.wartungsKosten), 6000)
+			print("Wartung abgerechnet: "..tostring(spec.wartungsKosten))
+			spec.wartungsKosten = 0
+		end
 	end;
+	--[[
 	if moneyChange == true and Money ~= nil then
 	    local farms = g_farmManager.farmIdToFarm
 		if farms ~= nil then
@@ -463,15 +503,20 @@ function ExtendedVehicleMaintenance:onUpdate(dt, isActiveForInput, isActiveForIn
 		    end
 	    end
 	end
+	]]--
+		
 end;
 
 function ExtendedVehicleMaintenance:VEHICLE_MAINTENANCE()
-	if not ExtendedVehicleMaintenance.eventActive then return; end
-	    self.spec_ExtendedVehicleMaintenance.WartezeitMinuten = 0
-	    self.spec_ExtendedVehicleMaintenance.WartezeitStunden = OriginalTime
-	    self.spec_ExtendedVehicleMaintenance.CurrentMinuteBackup = g_currentMission.hud.environment.currentMinute
-	    self.spec_ExtendedVehicleMaintenance.WartungKnopfGedrückt = true
-		ExtendedVehicleMaintenance.eventActive = false
+	local spec = self.spec_ExtendedVehicleMaintenance
+	if not ExtendedVehicleMaintenance.eventActive or spec == nil then return; end
+		
+	spec.WartezeitMinuten = 0
+	spec.WartezeitStunden = OriginalTime
+	spec.CurrentMinuteBackup = g_currentMission.hud.environment.currentMinute
+	spec.WartungKnopfGedrückt = true
+	
+	ExtendedVehicleMaintenance.eventActive = false
 
 
 --MoneyType.VEHICLE_RUNNING_COSTS
@@ -483,9 +528,13 @@ function ExtendedVehicleMaintenance:VEHICLE_MAINTENANCE()
 	   
 	--end
 --	g_currentMission.shopMenu
-	moneyChange = true
-	Money = Costs
+	--moneyChange = true
+	--Money = Costs
+	print("Wartungskosten: "..tostring(Costs))
+	spec.wartungsKosten = spec.wartungsKosten + Costs
+	print("Wartung: Festgesetzt: "..tostring(spec.wartungsKosten))
+	--spec.kostenTraeger = self.ownerFarmId
 	
 	--g_inputBinding:setActionEventTextVisibility(ExtendedVehicleMaintenance.wartungsEvent, ExtendedVehicleMaintenance.eventActive)
-	self.spec_ExtendedVehicleMaintenance.dirtyFlag = self.spec_ExtendedVehicleMaintenance:getNextDirtyFlag()
+	spec.dirtyFlag = spec:getNextDirtyFlag()
 end;
