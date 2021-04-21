@@ -455,7 +455,7 @@ function ExtendedVehicleMaintenance:onUpdate(dt, isActiveForInput, isActiveForIn
 		if farms ~= nil then
 			self.farmId = 1	
 			while self.farmId <= #farms do
--- print(tostring(self.subvention))
+
 			    g_currentMission:addMoney(-Money, self.farmId, MoneyType.OTHER, true, true)
 			    g_currentMission:showBlinkingWarning(g_i18n:getText("warning_moneyChange", ExtendedVehicleMaintenance.l10nEnv):format(OriginalTime, Costs), 6000)
 			    self.farmId = self.farmId + 1
