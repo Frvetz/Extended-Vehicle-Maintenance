@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <translationContributors>Frvetz</translationContributors>
+
+    <texts>
+        <text name="information_Motor" text="Maintenance required in: %1.1f engine hours or %1.0f day(s)"/>
+		<text name="warning_wartung" text="Maintenance required!"/>
+		<text name="information_wartung" text="Maintenance completed in %1.0f hours and %1.0f minutes"/>
+		<text name="input_VEHICLE_MAINTENANCE" text="Service vehicle"/>
+		<text name="function_Pallet"  text="This pallet is used for the maintenance of your vehicles. Maintenance prices: 25.000,- 20.000,- 16.000,- 12.000,- 8.000,-"/>	
+		<text name="configuration_Time1" text="Waiting time: One hour"/>	
+		<text name="configuration_Time2" text="Waiting time: Four hours"/>	
+		<text name="configuration_Time3" text="Waiting time: Eight hours"/>	
+		<text name="configuration_Time4" text="Waiting time: 24 hours"/>	
+		<text name="configuration_Time5" text="Waiting time: 48 hours"/>
+		<text name="warning_moneyChange" text="               Maintenance is being executed and will be completed in %1.0f hour(s).
+The price for this maintenance is %1.0f,- and will be charged to your account."/>
+    </texts>
+</l10n>

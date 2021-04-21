@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle type="palletMaintencance">
+    <storeData>
+        <name>
+            <de>Wartungspalette</de>
+            <en>Servicing pallet</en>
+            <fr>Palette pour l'entretien</fr>
+        </name>
+        <functions>
+            <function>$l10n_function_Pallet</function>
+        </functions>
+        <image>store/Pallet.dds</image>
+        <price>500</price>
+        <allowLeasing>false</allowLeasing>
+        <canBeSold>true</canBeSold>
+        <rotation>0</rotation>
+        <brand>LIZARD</brand>
+        <category>pallets</category>
+        <financeCategory>OTHER</financeCategory>
+    </storeData>
+	
+    <base>
+        <filename>i3d/Pallet.i3d</filename>
+        <size width="2" length="2"/>
+        <input allowed="false"/>
+        <canBeReset>true</canBeReset>
+        <components>
+            <component centerOfMass="0 0.1 0" solverIterationCount="10" mass="250"/>
+        </components>
+    </base>
+	
+    <fillVolume>
+        <fillVolumeConfigurations>
+            <fillVolumeConfiguration>
+         
+            </fillVolumeConfiguration>
+        </fillVolumeConfigurations>
+    </fillVolume>
+	
+    <dynamicMount triggerNode="dynamicMountTrigger"/>
+	
+    <tensionBeltObject>
+        <meshNodes>
+            <meshNode node="tensionBeltNode"/>
+        </meshNodes>
+    </tensionBeltObject>
+	
+	<designConfigurations>
+        <designConfiguration name="$l10n_configuration_Time1" price="0" >
+            <objectChange node="0>2|6" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|7" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|8" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|9" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|10" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|11" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|11" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|13" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|14" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|15" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|16" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|17" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|12" visibilityActive="true" visibilityInactive="false"/>
+        </designConfiguration>
+		<designConfiguration name="$l10n_configuration_Time2" price="0" >
+            <objectChange node="0>2|18" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|19" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|20" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|21" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|22" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|23" visibilityActive="true" visibilityInactive="false"/>		
+            <objectChange node="0>2|7" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|15" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|17" visibilityActive="true" visibilityInactive="false"/>
+        </designConfiguration>
+		<designConfiguration name="$l10n_configuration_Time3" price="0">
+            <objectChange node="0>2|6" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|24" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|8" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|9" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|10" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|11" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|15" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|17" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|16" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|29" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|39" visibilityActive="true" visibilityInactive="false"/>
+        </designConfiguration>
+		<designConfiguration name="$l10n_configuration_Time4" price="0">
+            <objectChange node="0>2|25" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|26" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|27" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|28" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|29" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|30" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|31" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|32" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|33" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|34" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|8" visibilityActive="true" visibilityInactive="false"/>
+        </designConfiguration>
+		<designConfiguration name="$l10n_configuration_Time5" price="0">
+            <objectChange node="0>2|8" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|35" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|36" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|37" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|38" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="0>2|9" visibilityActive="true" visibilityInactive="false"/>
+        </designConfiguration>
+    </designConfigurations>
+	
+	<i3dMappings>
+        <i3dMapping id="dynamicMountTrigger" node="0>0"/>
+        <i3dMapping id="tensionBeltNode" node="0>1"/>
+    </i3dMappings>
+</vehicle>

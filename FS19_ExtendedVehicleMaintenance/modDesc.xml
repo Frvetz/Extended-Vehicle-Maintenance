@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="53">
+    <title>
+        <de>Fahrzeugwartung</de>
+        <en>Vehicle Maintenance</en>
+        <fr>Maintenance Du Véhicule</fr>
+    </title>
+    <description>
+        <de>
+<![CDATA[Mit diesem Mod muss das Fahrzeug alle 30 Motorstunden oder 36 Tage gewartet werden (mit dem Seasons-Mod passt sich das Tageslimit so an, dass man einmal pro Saison (ein Jahr) warten muss). Falls man dies nicht tut, kann es dabei beim Motorstart zu einer Fehlzündung kommen und der Motor bei zu hoher Motorlast absterben.
+Um das Fahrzeug zu warten (Standardgemäß: Strg + m) muss eine Palette im Shop gekauft werden. Fährt man an diese nah genug heran, erscheint die Taste im Hilfefenster und es kann gewartet werden. Anschließend muss man je nach konfigurierter Zeit der Palette (geringere Zeit = höhere Kosten beim Warten) warten, bis das Fahrzeug wieder einsatzbereit ist, somit kann zum Beispiel in der Erntezeit genau eingeplant werden, wann man sein Fahrzeug abgibt und wann man es unbedingt braucht.
+
+KEIN NEUES SAVEGAME MEHR NÖTIG
+Beim Upload der Version 1.0.0.3 kam es zu ein paar Problemen, falls Sie dieses Update übersehen haben, lesen sie bitte die dazugehörige Changelog und/oder die neue Beschreibung.
+
+Preis der Palette: 500,-
+Wartungspreise: 25.000,- (Konfiguration 1)  20.000,- (Konfiguration 2)  16.000,- (Konfiguration 3)  12.000,- (Konfiguration 4)  8.000,- (Konfiguration 5)  (wird auch in der Beschreibung der Palette erwähnt)
+
+---  Kontakt: ExtendedVehicleMaintenance@gmail.com
+
+Changelog Version 1.0.0.1:
+- Beschreibung angepasst
+- Neues Icon
+- Tagelimit passt sich an den Seasons-Mod an
+- Motorfehlstart ist nach Erreichen des Limits möglich
+- Motor kann bei zu hoher Motorlast absterben
+- Bugs bei mehrmaligem Warten behoben
+- Zieht die Motorstunden und das Alter nicht mehr beim ersten Laden ab
+- Fehler mit "Großeinkauf-Mod" behoben  (Palette konnte nicht gekauft werden)
+- Multiplayer Probleme behoben
+
+
+Changelog Version 1.0.0.2:
+- FPS Probleme behoben
+- Dedicated Server Probleme behoben
+- Licht der Lampe entfernt
+- Beschreibung leicht angepasst
+- Fehler behoben, bei dem die Taste zum Warten nicht aufgetaucht ist
+- Fehler behoben, bei dem der alte Zustand des Fahrzeuges nicht wiederhergestellt wurde
+
+
+Changelog Version 1.0.0.3:
+- Beschreibung angepasst
+- Fehler behoben, bei dem die Taste zum Warten immer noch nicht aufgetaucht ist
+- Die restliche Zeit, die für die Wartung benötigt wird, wird nun abgespeichert und bei erneutem Betreten des Spielstandes fortgesetzt
+- Wartung kann nun jeder Zeit durchgeführt werden
+- Wartung ist mit dem Seasons-Mod nun nur noch 1 Mal pro Saison notwendig
+- An der Palette kann nun konfiguriert werden, wie lange es dauert, bis die Wartung abgeschlossen ist. (Geringere Zeit = Höhere Kosten beim Warten)
+- Die Wartung kostet nun einen bestimmten Betrag
+- Schadenssystem aus dem Ls19 passt sich nun der Wartung an
+
+
+Changelog Version 1.0.0.4:
+- Beschreibung leicht angepasst
+- Error mit Maschinen, die keinen Motor haben, behoben (Beispielsweise: Förderband)
+- Übersetzung der Konfiguration hinzugefügt
+
+
+Changelog Version 1.0.0.5:
+- Fahrzeug muss nun nicht mehr ausgewählt sein, um die Informationen für die Wartung zu sehen und um das Fahrzeug zu warten
+- Motor stirbt wieder korrekt ab, wenn die Motorlast zu hoch ist und ein anderes Gerät ausgewählt ist als das aktuelle Fahrzeug
+    ]]>
+	</de>
+	<en>
+<![CDATA[With this mod, the vehicle must be serviced every 30 engine hours or 36 days (with the Seasons-Mod, the day limit adjusts so that you have to service once per season (one year)). If you do not do this, the engine may misfire when you start it and the motor may die if the engine load is too high.
+To service the vehicle (by default: Ctrl + m), a pallet must be purchased from the shop. If you drive to it close enough, the key appears in the help window and the vehicle can be serviced. Afterwards, depending on the configured time of the pallet (less time = higher costs for maintenance), you have to wait until the vehicle is ready for use again. This way, for example during the harvest season, you can plan exactly when you don't really need your vehicle and when you do.
+
+NO MORE NEED FOR A NEW SAVEGAME
+There were some problems with the upload of version 1.0.0.3, if you missed this update, please read the changelog and/or the new description.
+
+Price of the pallet: 500,-
+Maintenance prices: 25.000,- (configuration 1)  20.000,- (configuration 2)  16.000,- (configuration 3)  12.000,- (configuration 4)  8.000,- (configuration 5)  (Also mentioned in the description of the range)
+
+---  Contact: ExtendedVehicleMaintenance@gmail.com
+
+Changelog Version 1.0.0.1:
+- Description adapted
+- New icon
+- Day limit adapts to the Seasons-Mod
+- Engine may fail to start when starting the motor after reaching the limit
+- Engine can stall if engine load is too high
+- Bugs fixed when servicing several times
+- No longer subtracts engine hours and age on first load
+- Fixed a bug with "bulk buy mod" (pallet could not be bought)
+- Fixed multiplayer problems
+
+
+Changelog Version 1.0.0.2:
+- FPS problems fixed
+- Dedicated server problems fixed
+- Lamp light removed
+- Description slightly adjusted
+- Fixed bug where the button did not appear
+- Fixed bug where the old state of the vehicle was not restored
+
+
+Changelog Version 1.0.0.3:
+- Description adapted
+- Fixed a bug where the button has still not appeared.
+- The remaining time needed for maintenance is now saved and continued when re-entering the savegame
+- Maintenance can now be done at any time
+- Maintenance is now only necessary 1 time per season with the Seasons-Mod
+- At the pallet it is now possible to configure how long it takes until the maintenance is completed. (Less time = higher costs for maintenance)
+- Maintenance now costs a certain amount
+- Damage system from the Fs19 now adapts to maintenance
+
+
+Changelog Version 1.0.0.4:
+- Description slightly adapted
+- Fixed error with machines that do not have a motor (for example: conveyor belt)
+- Added translation for the configuration
+
+
+Changelog Version 1.0.0.5:
+- Vehicle no longer needs to be selected to see the maintenance information and to service the vehicle.
+- Engine quits again correctly if the engine load is too high and something else is selected than the current vehicle
+    ]]>	
+	</en>	
+	<fr>
+<![CDATA[Avec ce mod, le véhicule doit être révisé toutes les 30 heures de fonctionnement du moteur ou tous les 36 jours (avec le mod Seasons, la limite de jours s'ajuste de sorte que vous devez réviser une fois par saison (un an)). Si vous ne le faites pas, le moteur peut avoir des ratés au démarrage et le moteur peut mourir si la charge du moteur est trop élevée.
+Pour effectuer l'entretien du véhicule (par défaut : Ctrl + m), il faut acheter une palette à l'atelier. Si vous vous en approchez suffisamment, le bouton apparaît dans la fenêtre d'aide et le véhicule peut être révisé. Ensuite, en fonction de la durée configurée de l`entretien (moins de temps = coûts d`entretien plus élevés), vous devez attendre que le véhicule soit à nouveau prêt à l`emploi. Ainsi, par exemple pendant la saison des récoltes, vous pouvez planifier exactement quand vous n`avez pas vraiment besoin de votre véhicule et quand vous en avez absolument besoin.
+
+PLUS BESOIN D'UNE NOUVELLE SAUVEGARDE
+Il y a eu quelques problèmes avec le téléchargement de la version 1.0.0.3, si vous avez manqué cette mise à jour, veuillez lire le changelog et/ou la nouvelle description.
+
+Prix de la palette : 500,-
+Prix de la maintenance : 25.000,- (configuration 1)  20.000,- (configuration 2)  16.000,- (configuration 3)  12.000,- (configuration 4)  8.000,- (configuration 5)  (Également mentionné dans la description de la palette)
+
+---  Contact: ExtendedVehicleMaintenance@gmail.com
+
+Journal des modifications version 1.0.0.1:
+- Description adaptée
+- Nouvelle icône
+- La limite de jour s'adapte au Seasons-Mod
+- Le moteur peut ne pas démarrer lors du démarrage du moteur après avoir atteint la limite
+- Le moteur peut caler si la charge du moteur est trop élevée
+- Bugs corrigés lors de l'entretien à plusieurs reprises
+- Ne soustrait plus les heures et l'âge du moteur lors du premier chargement
+- Correction d'un bug avec "achat en gros mod" (la palette ne pouvait pas être achetée)
+- Correction de problèmes multijoueurs
+
+
+Journal des modifications version 1.0.0.2:
+-Changelog Version 1.0.0.2 :
+- Correction des problèmes de FPS
+- Correction des problèmes de serveurs dédiés
+- Suppression de la lumière de la lampe
+- Description légèrement ajustée
+- Correction d'un bug où le bouton n'apparaissait pas
+- Correction d'un bug où l'ancien état du véhicule n'était pas restauré
+
+
+Journal des modifications version 1.0.0.3:
+- Description adaptée
+- Correction d'un bug où le bouton n'apparaissait toujours pas.
+- Le temps restant nécessaire à la maintenance est maintenant sauvegardé et poursuivi lors de la ré-entrée dans la sauvegarde.
+- La maintenance peut maintenant être effectuée à tout moment
+- La maintenance n'est maintenant nécessaire qu'une fois par saison avec le Seasons-Mod.
+- Au niveau de la palette, il est maintenant possible de configurer le temps nécessaire à la maintenance. (Moins de temps = coûts d'entretien plus élevés)
+- La maintenance coûte maintenant un certain montant
+- Le système de dommages de Farming Simulator 2019 s'adapte désormais à la maintenance.
+
+
+Journal des modifications version 1.0.0.4:
+- Description légèrement adaptée
+- Correction d'une erreur avec des machines sans moteur (par exemple: bande transporteuse)
+- Ajout d'une traduction pour la configuration
+
+
+Changelog Version 1.0.0.5 :
+- Il n'est plus nécessaire de sélectionner le véhicule pour voir les informations de maintenance et pour effectuer l'entretien du véhicule.
+- Le moteur s'éteint à nouveau correctement si la charge du moteur est trop élevée et qu'un autre véhicule que le véhicule actuel est sélectionné.
+    ]]>
+	</fr>
+    </description>
+    <author>Frvetz</author>
+    <version>1.0.0.5</version>
+    <iconFilename>icon.dds</iconFilename>
+    <multiplayer supported="true"/>
+    <extraSourceFiles>
+		<sourceFile filename="registerExtendedVehicleMaintenance.lua" />		
+    </extraSourceFiles>
+	
+	<l10n filenamePrefix="translations/translation"/>
+	
+	<actions>
+       <action name="VEHICLE_MAINTENANCE"/>
+    </actions>
+	
+	<inputBinding>
+        <actionBinding action="VEHICLE_MAINTENANCE">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_lctrl KEY_m"/>
+        </actionBinding>
+    </inputBinding>
+	
+    <storeItems>
+        <storeItem rootNode="vehicle" xmlFilename="xml/pallet.xml"/>
+	</storeItems>
+	
+	<vehicleTypes>
+        <type name="palletMaintencance" parent="pallet" filename="$dataS/scripts/vehicles/Vehicle.lua">
+        </type>
+    </vehicleTypes>
+</modDesc>
