@@ -438,11 +438,12 @@ function ExtendedVehicleMaintenance:onUpdate(dt, isActiveForInput, isActiveForIn
 		if self.spec_ExtendedVehicleMaintenance.WartungKnopfGedrückt == true then
 			local spec = self.spec_ExtendedVehicleMaintenance
 			self:stopMotor()
-			changeFlag = true
+			-- changeFlag = true
 			-- subtracts the time from the 1 hour 
 			if self.spec_ExtendedVehicleMaintenance.CurrentMinuteBackup ~= g_currentMission.hud.environment.currentMinute then
-				self.spec_ExtendedVehicleMaintenance.CurrentMinuteBackup = g_currentMission.hud.environment.currentMinute
-				self.spec_ExtendedVehicleMaintenance.WartezeitMinuten = self.spec_ExtendedVehicleMaintenance.WartezeitMinuten - 1
+			    self.spec_ExtendedVehicleMaintenance.CurrentMinuteBackup = g_currentMission.hud.environment.currentMinute
+			    self.spec_ExtendedVehicleMaintenance.WartezeitMinuten = self.spec_ExtendedVehicleMaintenance.WartezeitMinuten - 1
+			    changeFlag = true
 			end;
 			if self.spec_ExtendedVehicleMaintenance.WartezeitMinuten < 0 then
 			    self.spec_ExtendedVehicleMaintenance.WartezeitMinuten = 59
