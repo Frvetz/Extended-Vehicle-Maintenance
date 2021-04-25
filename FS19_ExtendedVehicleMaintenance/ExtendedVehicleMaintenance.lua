@@ -78,6 +78,7 @@ function ExtendedVehicleMaintenance:onRegisterActionEvents()
 		_, ExtendedVehicleMaintenance.wartungsEvent = self:addActionEvent(ExtendedVehicleMaintenance.actionEvents, 'VEHICLE_MAINTENANCE', self, ExtendedVehicleMaintenance.VEHICLE_MAINTENANCE, false, true, false, true, nil)
 		g_inputBinding:setActionEventTextPriority(ExtendedVehicleMaintenance.wartungsEvent, GS_PRIO_NORMAL)
 		g_inputBinding:setActionEventTextVisibility(ExtendedVehicleMaintenance.wartungsEvent, ExtendedVehicleMaintenance.eventActive)
+		print("registert das Action Event")
 end
 
 function ExtendedVehicleMaintenance:onLoad(savegame)
@@ -333,8 +334,7 @@ function ExtendedVehicleMaintenance:onUpdate(dt, isActiveForInput, isActiveForIn
 		end
 		
 	end;
-	print("OriginalTime: "..tostring(ExtendedVehicleMaintenance.OriginalTime))
-	print("WartezeitStunden: "..tostring(self.spec_ExtendedVehicleMaintenance.WartezeitStunden))
+
 	if self.spec_motorized ~= nil then
 	
 		--print("onUpdate - Server: "..tostring(g_server ~= nil))
@@ -357,6 +357,7 @@ function ExtendedVehicleMaintenance:onUpdate(dt, isActiveForInput, isActiveForIn
 
 		if self.isClient and isActiveForInputIgnoreSelection and Wartung == false and self.spec_ExtendedVehicleMaintenance.WartungKnopfGedrückt == false then
 			g_currentMission:addExtraPrintText(g_i18n:getText("information_Motor", ExtendedVehicleMaintenance.l10nEnv):format(self.spec_ExtendedVehicleMaintenance.Variable, self.spec_ExtendedVehicleMaintenance.Days)) -- 110n Text
+			self.spec_ExtendedVehicleMaintenance.WartungKnopfGedrückt = false
 		end;
 		--hours
 		if self.isClient and isActiveForInputIgnoreSelection then
@@ -461,6 +462,7 @@ function ExtendedVehicleMaintenance:onUpdate(dt, isActiveForInput, isActiveForIn
 			end
 			if paletteGefunden then 
 				local spec = self.spec_ExtendedVehicleMaintenance;
+				--print(ExtendedVehicleMaintenance.eventActive)
 				ExtendedVehicleMaintenance.eventActive = true and not spec.WartungKnopfGedrückt
 			else
 				ExtendedVehicleMaintenance.eventActive = false
@@ -505,7 +507,7 @@ function ExtendedVehicleMaintenance:onUpdate(dt, isActiveForInput, isActiveForIn
 		end;
 		if changeFlag then
 			self:raiseDirtyFlags(self.spec_ExtendedVehicleMaintenance.dirtyFlag)
-			print("CHANGEFLAG")
+			--print("CHANGEFLAG")
 		end
 		
 		--print("Wartung: Spec existiert: "..tostring(spec ~= nil))
@@ -546,33 +548,36 @@ function ExtendedVehicleMaintenance:onUpdate(dt, isActiveForInput, isActiveForIn
 end;
 
 function ExtendedVehicleMaintenance.setWartung(vehicle, wartungsStatus, CurrentMinuteBackup, WartezeitStunden, WartezeitMinuten)
-	local spec = vehicle.spec_ExtendedVehicleMaintenance
-	spec.WartungKnopfGedrückt = spec.WartungKnopfGedrückt or wartungsStatus
-	spec.CurrentMinuteBackup = spec.CurrentMinuteBackup or CurrentMinuteBackup
-	spec.WartezeitStunden = spec.WartezeitStunden or WartezeitStunden
-	spec.WartezeitMinuten = spec.WartezeitMinuten or WartezeitMinuten
-	ExtendedVehicleMaintenance.OriginalTime = ExtendedVehicleMaintenance.OriginalTime or ExtendedVehicleMaintenance.OriginalTimeEvent
-	spec.WartezeitStunden = ExtendedVehicleMaintenance.OriginalTime
-	spec.WartezeitMinuten = 0
-	spec.CurrentMinuteBackup = g_currentMission.hud.environment.currentMinute
-	print("wartungsStatus: "..tostring(wartungsStatus))
+	    local spec = vehicle.spec_ExtendedVehicleMaintenance
+	    spec.WartungKnopfGedrückt = spec.WartungKnopfGedrückt or wartungsStatus
+	    spec.CurrentMinuteBackup = spec.CurrentMinuteBackup or CurrentMinuteBackup
+	    spec.WartezeitStunden = spec.WartezeitStunden or WartezeitStunden
+	    spec.WartezeitMinuten = spec.WartezeitMinuten or WartezeitMinuten
+	    ExtendedVehicleMaintenance.OriginalTime = ExtendedVehicleMaintenance.OriginalTime or ExtendedVehicleMaintenance.OriginalTimeEvent
+	    spec.WartezeitStunden = ExtendedVehicleMaintenance.OriginalTime
+	    spec.WartezeitMinuten = 0
+	    spec.CurrentMinuteBackup = g_currentMission.hud.environment.currentMinute
 end
 
 function ExtendedVehicleMaintenance:VEHICLE_MAINTENANCE()
-	local spec = self.spec_ExtendedVehicleMaintenance
-	if not ExtendedVehicleMaintenance.eventActive or spec == nil then return; end
+    if self.spec_ExtendedVehicleMaintenance ~= nil and self:getIsEntered() then
+	    local spec = self.spec_ExtendedVehicleMaintenance
+	    if not ExtendedVehicleMaintenance.eventActive or spec == nil then 
+	        print("returned")
+	        return; 
+	    end
+
+    	
 	
-	print(ExtendedVehicleMaintenance.OriginalTime)
-	
-	spec.WartezeitStunden = ExtendedVehicleMaintenance.OriginalTime
-	spec.WartezeitMinuten = 0
-	spec.CurrentMinuteBackup = g_currentMission.hud.environment.currentMinute
+	    spec.WartezeitStunden = ExtendedVehicleMaintenance.OriginalTime
+	    spec.WartezeitMinuten = 0
+	    spec.CurrentMinuteBackup = g_currentMission.hud.environment.currentMinute
 	
 	
-	spec.WartungKnopfGedrückt = true
+	    spec.WartungKnopfGedrückt = true
 	
-	ExtendedVehicleMaintenance.eventActive = false
-	ExtendedVehicleMaintenenanceEvent.sendEvent(self, spec.WartungKnopfGedrückt, spec.CurrentMinuteBackup, spec.WartezeitStunden, spec.WartezeitMinuten, ExtendedVehicleMaintenance.OriginalTime)
+	    ExtendedVehicleMaintenance.eventActive = false
+	    ExtendedVehicleMaintenenanceEvent.sendEvent(self, spec.WartungKnopfGedrückt, spec.CurrentMinuteBackup, spec.WartezeitStunden, spec.WartezeitMinuten, ExtendedVehicleMaintenance.OriginalTime)
 
 
 --MoneyType.VEHICLE_RUNNING_COSTS
@@ -587,11 +592,12 @@ function ExtendedVehicleMaintenance:VEHICLE_MAINTENANCE()
 	--moneyChange = true
 	--Money = Costs
 	        -- print("Wartungskosten: "..tostring(Costs))
-    spec.wartungsKosten = spec.wartungsKosten + Costs
+        spec.wartungsKosten = spec.wartungsKosten + Costs
 	        --print("Wartung: Festgesetzt: "..tostring(spec.wartungsKosten))
 	    --spec.kostenTraeger = self.ownerFarmId
 	
 	    --g_inputBinding:setActionEventTextVisibility(ExtendedVehicleMaintenance.wartungsEvent, ExtendedVehicleMaintenance.eventActive)
-	spec.dirtyFlag = spec:getNextDirtyFlag()
-	changeFlag = true
+	    spec.dirtyFlag = spec:getNextDirtyFlag()
+	    changeFlag = true
+	end
 end;
