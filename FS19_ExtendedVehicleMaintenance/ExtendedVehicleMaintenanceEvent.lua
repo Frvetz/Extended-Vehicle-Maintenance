@@ -10,14 +10,14 @@ function ExtendedVehicleMaintenenanceEvent:emptyNew()
 	return self
 end
 
-function ExtendedVehicleMaintenenanceEvent:new(vehicle, wartungsStatus, CurrentMinuteBackup, WartezeitStunden, WartezeitMinuten, OriginalTimeEvent)
+function ExtendedVehicleMaintenenanceEvent:new(vehicle, wartungsStatus, CurrentMinuteBackup, WartezeitStunden, WartezeitMinuten)
 	local self = ExtendedVehicleMaintenenanceEvent:emptyNew()
 	self.vehicle = vehicle
 	self.wartungsStatus = wartungsStatus
     self.CurrentMinuteBackup = CurrentMinuteBackup
     self.WartezeitStunden = WartezeitStunden
     self.WartezeitMinuten = WartezeitMinuten
-    ExtendedVehicleMaintenance.OriginalTime = OriginalTimeEvent
+   -- ExtendedVehicleMaintenance.OriginalTime = OriginalTimeEvent
 
 print(OriginalTimeEvent)
 	return self
@@ -29,7 +29,7 @@ function ExtendedVehicleMaintenenanceEvent:readStream(streamId, connection)
     self.CurrentMinuteBackup = streamReadInt32(streamId)
     self.WartezeitStunden = streamReadInt32(streamId)
     self.WartezeitMinuten = streamReadInt32(streamId)
-    ExtendedVehicleMaintenance.OriginalTime = streamReadInt32(streamId)
+   -- ExtendedVehicleMaintenance.OriginalTime = streamReadInt32(streamId)
 	
 	self:run(connection)
 end
@@ -40,20 +40,20 @@ function ExtendedVehicleMaintenenanceEvent:writeStream(streamId, connection)
 	streamWriteInt32(streamId, self.CurrentMinuteBackup)
 	streamWriteInt32(streamId, self.WartezeitStunden)
 	streamWriteInt32(streamId, self.WartezeitMinuten)
-	streamWriteInt32(streamId, ExtendedVehicleMaintenance.OriginalTime)
+	--streamWriteInt32(streamId, ExtendedVehicleMaintenance.OriginalTime)
 end
 
 function ExtendedVehicleMaintenenanceEvent:run(connection)
-	ExtendedVehicleMaintenance.setWartung(self.vehicle, self.wartungsStatus, self.CurrentMinuteBackup, self.WartezeitStunden, self.WartezeitMinuten, ExtendedVehicleMaintenance.OriginalTime)
+	ExtendedVehicleMaintenance.setWartung(self.vehicle, self.wartungsStatus, self.CurrentMinuteBackup, self.WartezeitStunden, self.WartezeitMinuten)
 print("OriginalTime: "..tostring(ExtendedVehicleMaintenance.OriginalTime))
 	if not connection:getIsServer() then
 		g_server:broadcastEvent(self, false, connection, self.vehicle)
 	end
 end
 
-function ExtendedVehicleMaintenenanceEvent.sendEvent(vehicle, wartungsStatus, CurrentMinuteBackup, WartezeitStunden, WartezeitMinuten, OriginalTimeEvent)
+function ExtendedVehicleMaintenenanceEvent.sendEvent(vehicle, wartungsStatus, CurrentMinuteBackup, WartezeitStunden, WartezeitMinuten)
 	if g_server then
-		g_server:broadcastEvent(ExtendedVehicleMaintenenanceEvent:new(vehicle, wartungsStatus, CurrentMinuteBackup, WartezeitStunden, WartezeitMinuten, OriginalTimeEvent), nil, nil, vehicle)
+		g_server:broadcastEvent(ExtendedVehicleMaintenenanceEvent:new(vehicle, wartungsStatus, CurrentMinuteBackup, WartezeitStunden, WartezeitMinuten), nil, nil, vehicle)
 		print(OriginalTimeEvent)
 	end
 end
