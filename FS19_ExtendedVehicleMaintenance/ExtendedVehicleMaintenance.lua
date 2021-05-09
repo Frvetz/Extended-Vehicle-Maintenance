@@ -69,13 +69,14 @@ function ExtendedVehicleMaintenance.registerEventListeners(vehicleType)
 	SpecializationUtil.registerEventListener(vehicleType, "onPostLoad", ExtendedVehicleMaintenance);
 	SpecializationUtil.registerEventListener(vehicleType, "onReadStream", ExtendedVehicleMaintenance);
 	SpecializationUtil.registerEventListener(vehicleType, "onWriteStream", ExtendedVehicleMaintenance);
-	--SpecializationUtil.registerEventListener(vehicleType, "onReadUpdateStream", ExtendedVehicleMaintenance);
-	--SpecializationUtil.registerEventListener(vehicleType, "onWriteUpdateStream", ExtendedVehicleMaintenance);
+	SpecializationUtil.registerEventListener(vehicleType, "onReadUpdateStream", ExtendedVehicleMaintenance);
+    SpecializationUtil.registerEventListener(vehicleType, "onWriteUpdateStream", ExtendedVehicleMaintenance);
 	SpecializationUtil.registerEventListener(vehicleType, "onUpdate", ExtendedVehicleMaintenance);
 end;
 
 function ExtendedVehicleMaintenance.registerOverwrittenFunctions(vehicleType)
     SpecializationUtil.registerOverwrittenFunction(vehicleType, "getCanMotorRun", ExtendedVehicleMaintenance.getCanMotorRun);
+  --  SpecializationUtil.registerOverwrittenFunction(vehicleType, "getWearTotalAmount", ExtendedVehicleMaintenance.getWearTotalAmount);
 end
 
 function ExtendedVehicleMaintenance:onRegisterActionEvents()
@@ -433,11 +434,10 @@ function ExtendedVehicleMaintenance:onUpdate(dt, isActiveForInput, isActiveForIn
 				
 				-- with seasons
 		    if g_currentMission.environment.weather.environment ~= nil then -- checks if seasons is active
-			    self.spec_ExtendedVehicleMaintenance.AmountDays = self.spec_ExtendedVehicleMaintenance.Days * MultiplicationNumber + (self.spec_ExtendedVehicleMaintenance.DifferenzDays * MultiplicationNumber) + (self:getFormattedOperatingTime() * 3000) + spec.AddNumber
-				--print("AmountDays: "..tostring(self.spec_ExtendedVehicleMaintenance.AmountDays))
-				--print("AmountVariable: "..tostring(self.spec_ExtendedVehicleMaintenance.AmountVariable))
+			    self.spec_ExtendedVehicleMaintenance.AmountDays = self.spec_ExtendedVehicleMaintenance.Days * MultiplicationNumber + (self:getOperatingTimeBasedWearAmount() * 108000) + spec.AddNumber
+				print("AmountDays: "..tostring(self.spec_ExtendedVehicleMaintenance.AmountDays))
+				print("AmountVariable: "..tostring(self.spec_ExtendedVehicleMaintenance.AmountVariable))
 				--print("add: "..tostring(add))
-				
 				
 				--self.spec_ExtendedVehicleMaintenance.Days * MultiplicationNumber + (-self.spec_ExtendedVehicleMaintenance.DifferenzDays * MultiplicationNumber) + (self:getFormattedOperatingTime() * MultiplicationNumber)
 			end
@@ -449,7 +449,7 @@ function ExtendedVehicleMaintenance:onUpdate(dt, isActiveForInput, isActiveForIn
 				
 				-- with seasons
 			if g_currentMission.environment.weather.environment ~= nil then -- checks if seasons is active
-			    self.spec_ExtendedVehicleMaintenance.AmountVariable =  (108000 * self.spec_ExtendedVehicleMaintenance.MaintenanceTimes) - (-self.spec_ExtendedVehicleMaintenance.Differenz * 3600)
+			    self.spec_ExtendedVehicleMaintenance.AmountVariable =  (108000 * self.spec_ExtendedVehicleMaintenance.MaintenanceTimes) + (self.spec_ExtendedVehicleMaintenance.Differenz * 3600)
 			end
 		end		
 		--print("getWearTotalAmount: "..tostring(self:getWearTotalAmount()))
@@ -590,28 +590,57 @@ function ExtendedVehicleMaintenance:onUpdate(dt, isActiveForInput, isActiveForIn
 		--print("Wartung: Spec existiert: "..tostring(spec ~= nil))
 		--if spec ~= nil then print("Wartung: Kosten: "..tostring(spec.wartungsKosten)); end
 		
+		--[[if changeFlag then
+			self:raiseDirtyFlags(self.spec_ExtendedVehicleMaintenance.dirtyFlag)
+			
+			ExtendedVehicleMaintenenanceEvent.sendEvent(self, spec.WartungKnopfGedrueckt, spec.CurrentMinuteBackup, spec.WartezeitStunden, spec.WartezeitMinuten, spec.OriginalTimeBackup, spec.CostsBackup, spec.DontAllowXmlNumberReset, spec.wartungsKostenServer)
+			
+			--print("CHANGEFLAG")
+		end
+		
+		--print("Wartung: Spec existiert: "..tostring(spec ~= nil))
+		--if spec ~= nil then print("Wartung: Kosten: "..tostring(spec.wartungsKosten)); end
+		
 		if spec.wartungsKosten > 0 then
-            local farm = self.ownerFarmId
-            if g_server ~= nil then 
-                g_currentMission:addMoney(-spec.wartungsKosten, farm, MoneyType.VEHICLE_RUNNING_COSTS, true, true);
-            else
-                spec.wartungsKostenServer = spec.wartungsKostenServer + spec.wartungsKosten
-                changeFlag = true
-            end
-            if self:getIsEntered() then
-                g_currentMission:showBlinkingWarning(g_i18n:getText("warning_moneyChange", ExtendedVehicleMaintenance.l10nEnv):format(self.spec_ExtendedVehicleMaintenance.OriginalTimeBackup, spec.wartungsKosten), 6000)
-            end
-           spec.wartungsKosten = 0
-        end
+			local farm = self.ownerFarmId
+			--print("Wartung: FarmId: "..tostring(farm))
+			if g_server ~= nil then 
+				g_currentMission:addMoney(-spec.wartungsKosten, farm, MoneyType.VEHICLE_RUNNING_COSTS, true, true);
+				--print("Wartung: abgerechnet: "..tostring(spec.wartungsKosten))
+			else
+				spec.wartungsKostenServer = spec.wartungsKostenServer + spec.wartungsKosten
+				--print("Wartung: an Server zu senden: "..tostring(spec.wartungsKostenServer))
+			end
+			if self:getIsEntered() then
+			    g_currentMission:showBlinkingWarning(g_i18n:getText("warning_moneyChange", ExtendedVehicleMaintenance.l10nEnv):format(self.spec_ExtendedVehicleMaintenance.OriginalTimeBackup, spec.wartungsKosten), 6000)
+			end
+			--print("Wartung abgerechnet: "..tostring(spec.wartungsKosten))
+			spec.wartungsKosten = 0
+		end--]]
 		--print("Nicht in dem ActionEvent: "..tostring(self:getName()))
 		
 	end;
 	
 	
-	if changeFlag then
-        ExtendedVehicleMaintenenanceEvent.sendEvent(self, spec.WartungKnopfGedrueckt, spec.CurrentMinuteBackup, spec.WartezeitStunden, spec.WartezeitMinuten, spec.OriginalTimeBackup, spec.CostsBackup, spec.DontAllowXmlNumberReset,     spec.wartungsKostenServer)
+	if spec.wartungsKosten ~= nil and spec.wartungsKosten > 0 then
+        local farm = self.ownerFarmId
+        if g_server ~= nil then 
+            g_currentMission:addMoney(-spec.wartungsKosten, farm, MoneyType.VEHICLE_RUNNING_COSTS, true, true);
+        else
+            spec.wartungsKostenServer = spec.wartungsKostenServer + spec.wartungsKosten
+            changeFlag = true
+        end
+        if self:getIsEntered() then
+            g_currentMission:showBlinkingWarning(g_i18n:getText("warning_moneyChange", ExtendedVehicleMaintenance.l10nEnv):format(self.spec_ExtendedVehicleMaintenance.OriginalTimeBackup, spec.wartungsKosten), 6000)
+        end
+        spec.wartungsKosten = 0
     end
-	
+
+    if changeFlag then
+        self:raiseDirtyFlags(self.spec_ExtendedVehicleMaintenance.dirtyFlag)
+			
+		ExtendedVehicleMaintenenanceEvent.sendEvent(self, spec.WartungKnopfGedrueckt, spec.CurrentMinuteBackup, spec.WartezeitStunden, spec.WartezeitMinuten, spec.OriginalTimeBackup, spec.CostsBackup, spec.DontAllowXmlNumberReset)
+    end
 	
 	    --self.spec_FS19_RM_Seasons,seasonsVehicle.nextRepair = 0
 		
@@ -643,7 +672,18 @@ function ExtendedVehicleMaintenance:getCanMotorRun(superFunc)
     return false
 end
 
-function ExtendedVehicleMaintenance.setWartung(vehicle, wartungsStatus, CurrentMinuteBackup, WartezeitStunden, WartezeitMinuten, OriginalTimeBackup, CostsBackup, DontAllowXmlNumberReset, wartungsKostenServer)
+print("häääääää")
+
+function ExtendedVehicleMaintenance:getWearTotalAmount()
+print("GEHT!")
+print("GEHT!")
+print("GEHT!")
+print("GEHT!")
+print(self:getFormattedOperatingTime())
+self:setOperatingTime(20)
+end
+
+function ExtendedVehicleMaintenance.setWartung(vehicle, wartungsStatus, CurrentMinuteBackup, WartezeitStunden, WartezeitMinuten, OriginalTimeBackup, CostsBackup, DontAllowXmlNumberReset)
 	local spec = vehicle.spec_ExtendedVehicleMaintenance
 	spec.WartungKnopfGedrueckt = wartungsStatus
 	spec.CurrentMinuteBackup = CurrentMinuteBackup
@@ -653,12 +693,6 @@ function ExtendedVehicleMaintenance.setWartung(vehicle, wartungsStatus, CurrentM
 	spec.OriginalTimeBackup = OriginalTimeBackup
 	spec.CostsBackup = CostsBackup
 	spec.DontAllowXmlNumberReset = DontAllowXmlNumberReset
-	spec.wartungsKostenServer = wartungsKostenServer
-	
-	if spec.wartungsKostenServer > 0 then 
-        spec.wartungsKosten = spec.wartungsKosten + spec.wartungsKostenServer
-        spec.wartungsKostenServer = 0
-    end
 end
 
 function ExtendedVehicleMaintenance.setFinished(vehicle, BackupAgeXML, BackupOperatingTimeXML, MaintenanceTimes, Differenz, DifferenzDays)
@@ -688,8 +722,7 @@ function ExtendedVehicleMaintenance:VEHICLE_MAINTENANCE()
 	spec.WartungKnopfGedrueckt = true
 	
 	ExtendedVehicleMaintenance.eventActive = false
-	ExtendedVehicleMaintenenanceEvent.sendEvent(self, spec.WartungKnopfGedrueckt, spec.CurrentMinuteBackup, spec.WartezeitStunden, spec.WartezeitMinuten, spec.OriginalTimeBackup, spec.CostsBackup, spec.DontAllowXmlNumberReset, spec.wartungsKostenServer)
-
+	ExtendedVehicleMaintenenanceEvent.sendEvent(self, spec.WartungKnopfGedrueckt, spec.CurrentMinuteBackup, spec.WartezeitStunden, spec.WartezeitMinuten, spec.OriginalTimeBackup, spec.CostsBackup, spec.DontAllowXmlNumberReset)
 
 --MoneyType.VEHICLE_RUNNING_COSTS
 
@@ -709,5 +742,8 @@ function ExtendedVehicleMaintenance:VEHICLE_MAINTENANCE()
 	
 	    --g_inputBinding:setActionEventTextVisibility(ExtendedVehicleMaintenance.wartungsEvent, ExtendedVehicleMaintenance.eventActive)
 		
-	--spec.dirtyFlag = spec:getNextDirtyFlag()
+	spec.dirtyFlag = spec:getNextDirtyFlag()
 end;
+
+Player.getWearTotalAmount = Utils.appendedFunction(Player.getWearTotalAmount, ExtendedVehicleMaintenance.getWearTotalAmount)
+print("Player.getWearTotalAmount: "..tostring(Player.getWearTotalAmount))

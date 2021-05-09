@@ -5,23 +5,23 @@ local ExtendedVehicleMaintenenanceEvent_mt = Class(ExtendedVehicleMaintenenanceE
 InitEventClass(ExtendedVehicleMaintenenanceEventFinish, "ExtendedVehicleMaintenenanceEventFinish")
 
 function ExtendedVehicleMaintenenanceEventFinish:emptyNew()
-	local self = Event:new(ExtendedVehicleMaintenenanceEvent_mt)
+	local event = Event:new(ExtendedVehicleMaintenenanceEvent_mt)
 
-	return self
+	return event
 end
 
 function ExtendedVehicleMaintenenanceEventFinish:new(vehicle, BackupAgeXML, BackupOperatingTimeXML, MaintenanceTimes, Differenz, DifferenzDays)
-    local self = ExtendedVehicleMaintenenanceEventFinish:emptyNew()
-	self.vehicle = vehicle
-	self.BackupAgeXML = BackupAgeXML
-	self.BackupOperatingTimeXML = BackupOperatingTimeXML
-	self.MaintenanceTimes = MaintenanceTimes
-	self.Differenz = Differenz
-	self.DifferenzDays = DifferenzDays
+    local event = ExtendedVehicleMaintenenanceEventFinish:emptyNew()
+	event.vehicle = vehicle
+	event.BackupAgeXML = BackupAgeXML
+	event.BackupOperatingTimeXML = BackupOperatingTimeXML
+	event.MaintenanceTimes = MaintenanceTimes
+	event.Differenz = Differenz
+	event.DifferenzDays = DifferenzDays
 	   --self.wartungsStatus = wartungsStatus
        -- ExtendedVehicleMaintenance.OriginalTime = OriginalTimeEvent
 	   
-	return self
+	return event
 end
 
 function ExtendedVehicleMaintenenanceEventFinish:readStream(streamId, connection)
@@ -57,7 +57,9 @@ function ExtendedVehicleMaintenenanceEventFinish:run(connection)
 end
 
 function ExtendedVehicleMaintenenanceEventFinish.sendEvent(vehicle, BackupAgeXML, BackupOperatingTimeXML, MaintenanceTimes, Differenz, DifferenzDays)
-	if g_server then
+	if g_server ~= nil then
 		g_server:broadcastEvent(ExtendedVehicleMaintenenanceEventFinish:new(vehicle, BackupAgeXML, BackupOperatingTimeXML, MaintenanceTimes, Differenz, DifferenzDays), nil, nil, vehicle)
+	else
+	    g_client:getServerConnection():sendEvent(ExtendedVehicleMaintenenanceEventFinish:new(vehicle, BackupAgeXML, BackupOperatingTimeXML, MaintenanceTimes, Differenz, DifferenzDays))
 	end
 end
