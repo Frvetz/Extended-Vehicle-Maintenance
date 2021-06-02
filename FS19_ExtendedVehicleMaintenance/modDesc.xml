@@ -7,16 +7,17 @@
     </title>
     <description>
         <de>
-<![CDATA[Mit diesem Mod muss das Fahrzeug alle 30 Motorstunden oder 36 Tage gewartet werden (mit dem Seasons-Mod passt sich das Tageslimit so an, dass man einmal pro Saison (ein Jahr) warten muss). Falls man dies nicht tut, kann es dabei beim Motorstart zu einer Fehlzündung kommen und der Motor bei zu hoher Motorlast absterben.
-Um das Fahrzeug zu warten (Standardgemäß: Strg + m) muss eine Palette im Shop gekauft werden. Fährt man an diese nah genug heran, erscheint die Taste im Hilfefenster und es kann gewartet werden. Anschließend muss man je nach konfigurierter Zeit der Palette (geringere Zeit = höhere Kosten beim Warten) warten, bis das Fahrzeug wieder einsatzbereit ist, somit kann zum Beispiel in der Erntezeit genau eingeplant werden, wann man sein Fahrzeug abgibt und wann man es unbedingt braucht.
+<![CDATA[Mit diesem Mod muss das Fahrzeug alle 30 Motorstunden oder 36 Tage gewartet werden (mit dem Seasons-Mod passt sich das Tageslimit so an, dass man einmal pro Saison (ein Jahr) warten muss). Falls man dies nicht tut, kann es beim Motorstart zu einer Fehlzündung kommen und der Motor bei zu hoher Motorlast absterben.
+Um das Fahrzeug zu warten (Standardgemäß: Strg + m) muss eine Palette im Shop gekauft werden. Fährt man an diese nah genug heran, erscheint die belegte Taste im Hilfefenster und es kann gewartet werden. Anschließend muss man je nach konfigurierter Zeit der Palette (geringere Zeit = höhere Kosten beim Warten) warten, bis das Fahrzeug wieder einsatzbereit ist, somit kann zum Beispiel in der Erntezeit genau eingeplant werden, wann man sein Fahrzeug abgibt und wann man es unbedingt braucht.
+Das Ls19-Schaden-System wurde so angepasst, dass das Fahrzeug bei erreichen von 30 Motorstunden ("Wartung nötig") komplett kaputt ist und nur durch die Wartung repariert werden kann.
 
 KEIN NEUES SAVEGAME MEHR NÖTIG
-Beim Upload der Version 1.0.0.3 kam es zu ein paar Problemen, falls Sie dieses Update übersehen haben, lesen sie bitte die dazugehörige Changelog und/oder die neue Beschreibung.
 
 Preis der Palette: 500,-
 Wartungspreise: 25.000,- (Konfiguration 1)  20.000,- (Konfiguration 2)  16.000,- (Konfiguration 3)  12.000,- (Konfiguration 4)  8.000,- (Konfiguration 5)  (wird auch in der Beschreibung der Palette erwähnt)
 
----  Kontakt: ExtendedVehicleMaintenance@gmail.com
+---  Vollständige Multiplayer-Unterstützung
+---  KONTAKT/SUPPORT: ExtendedVehicleMaintenance@gmail.com
 
 Changelog Version 1.0.0.1:
 - Beschreibung angepasst
@@ -59,19 +60,41 @@ Changelog Version 1.0.0.4:
 Changelog Version 1.0.0.5:
 - Fahrzeug muss nun nicht mehr ausgewählt sein, um die Informationen für die Wartung zu sehen und um das Fahrzeug zu warten
 - Motor stirbt wieder korrekt ab, wenn die Motorlast zu hoch ist und ein anderes Gerät ausgewählt ist als das aktuelle Fahrzeug
+- Multiplayer-Sync-Probleme behoben
+- Multiplayer-Geld-Probleme behoben
+- Dedi-Probleme behoben
+- Alle Geräte (außer fahrbare) können nun wieder normal repariert werden.
+- Fahrbare Fahrzeuge können nun gar nicht mehr normal repariert werden.
+- Blink-Text, wenn gewartet wird, hinzugefügt
+- Schaden funktioniert nun richtig in kombination mit dem Seasons-Mod
+- Die Motorstunden gelten jetzt als "Schadens-Wartung" und die Tage als "Intervall-Wartung" -- (Schaden passt sich nur noch den Motorstunden an)
+- Motor kann bei der Wartung nun gar nicht mehr gestartet werden 
+
+
+Ideen die im nächsten Update vielleicht enthalten sein werden (wie oder ob sie enthalten sind ist nicht sicher):
+- Anpassung der Höhe des Schaden bei "Wartung benötigt"
+- Bestätigungsfenster ob man das Fahrzeug wirklich warten will
+- Anpassung der Paletten, um diese besser auseinander halten zu können
+- Individuelle Anpassung des Wartungspreises für jedes Fahrzeug
+- Preis richtig sich auch nach dem Schaden/übrige Zeit die das Fahrzeug hat
+- Palette wird für die Wartung dauerhaft benötigt
+- Abgestimmter Schaden kann deaktiviert werden.
+- Weitere kleine Spielereien
+
     ]]>
 	</de>
 	<en>
-<![CDATA[With this mod, the vehicle must be serviced every 30 engine hours or 36 days (with the Seasons-Mod, the day limit adjusts so that you have to service once per season (one year)). If you do not do this, the engine may misfire when you start it and the motor may die if the engine load is too high.
-To service the vehicle (by default: Ctrl + m), a pallet must be purchased from the shop. If you drive to it close enough, the key appears in the help window and the vehicle can be serviced. Afterwards, depending on the configured time of the pallet (less time = higher costs for maintenance), you have to wait until the vehicle is ready for use again. This way, for example during the harvest season, you can plan exactly when you don't really need your vehicle and when you do.
+<![CDATA[With this mod, the vehicle must be serviced every 30 engine hours or 36 days (with the Seasons-Mod, the day limit adjusts so that you have to service once per season (one year)). If you do not do this, the engine may misfire when you start it and the motor may cut-out if the engine load is too high.
+To service the vehicle (by default: Ctrl + m), a pallet must be purchased from the shop. If you drive along side the pallet, the key appears in the help window and the vehicle can be serviced. Afterwards, depending on the configured time of the pallet (less time = higher costs for maintenance), you have to wait until the vehicle is ready for use again. For example during the harvest season, you can plan exactly when you don't need your vehicle and when you do.
+The fs19 damage system has been modified so that when the vehicle reaches 30 engine hours ("maintenance required"), it is completely broken and can only be repaired by maintenance.
 
 NO MORE NEED FOR A NEW SAVEGAME
-There were some problems with the upload of version 1.0.0.3, if you missed this update, please read the changelog and/or the new description.
 
 Price of the pallet: 500,-
 Maintenance prices: 25.000,- (configuration 1)  20.000,- (configuration 2)  16.000,- (configuration 3)  12.000,- (configuration 4)  8.000,- (configuration 5)  (Also mentioned in the description of the range)
 
----  Contact: ExtendedVehicleMaintenance@gmail.com
+---  Full multiplayer support
+---  CONTACT/SUPPORT: ExtendedVehicleMaintenance@gmail.com
 
 Changelog Version 1.0.0.1:
 - Description adapted
@@ -113,12 +136,33 @@ Changelog Version 1.0.0.4:
 
 Changelog Version 1.0.0.5:
 - Vehicle no longer needs to be selected to see the maintenance information and to service the vehicle.
-- Engine quits again correctly if the engine load is too high and something else is selected than the current vehicle
+- The engine cuts-off again correctly if the engine load is too high and another implement is selected than the current vehicle
+- Multiplayer sync problems fixed
+- Fixed multiplayer money problems
+- Dedi problems fixed
+- All equipment (except drivable) can now be repaired normally.
+- Drivable vehicles can now no longer be repaired normally at all.
+- Added blink text when servicing
+- Damage now works correctly in combination with the Seasons mod
+- Engine hours now count as a "damage maintenance" and days as an "interval maintenance" -- (damage only adjusts to engine hours)
+- Engine can now no longer be started at all during maintenance 
+
+
+Ideas that may be included in the next update (how or if they are included is not sure):
+- Adjustment of the damage at "Maintenance needed".
+- Confirmation window if you really want to service the vehicle
+- Adjustment of the pallets to better distinguish them from each other
+- Individual adjustment of the maintenance price for each vehicle
+- Price is also adjusted according to the damage/time left on the vehicle.
+- Pallet is needed permanently for maintenance
+- Adjusted damage can be deactivated
+- Other small gimmicks
     ]]>	
 	</en>	
 	<fr>
 <![CDATA[Avec ce mod, le véhicule doit être révisé toutes les 30 heures de fonctionnement du moteur ou tous les 36 jours (avec le mod Seasons, la limite de jours s'ajuste de sorte que vous devez réviser une fois par saison (un an)). Si vous ne le faites pas, le moteur peut avoir des ratés au démarrage et le moteur peut mourir si la charge du moteur est trop élevée.
 Pour effectuer l'entretien du véhicule (par défaut : Ctrl + m), il faut acheter une palette à l'atelier. Si vous vous en approchez suffisamment, le bouton apparaît dans la fenêtre d'aide et le véhicule peut être révisé. Ensuite, en fonction de la durée configurée de l`entretien (moins de temps = coûts d`entretien plus élevés), vous devez attendre que le véhicule soit à nouveau prêt à l`emploi. Ainsi, par exemple pendant la saison des récoltes, vous pouvez planifier exactement quand vous n`avez pas vraiment besoin de votre véhicule et quand vous en avez absolument besoin.
+Le système de dommages de fs19 a été modifié de sorte que lorsque le véhicule atteint 30 heures de moteur ("entretien nécessaire"), il est complètement cassé et ne peut être réparé que par la maintenance.
 
 PLUS BESOIN D'UNE NOUVELLE SAUVEGARDE
 Il y a eu quelques problèmes avec le téléchargement de la version 1.0.0.3, si vous avez manqué cette mise à jour, veuillez lire le changelog et/ou la nouvelle description.
@@ -126,7 +170,8 @@ Il y a eu quelques problèmes avec le téléchargement de la version 1.0.0.3, si
 Prix de la palette : 500,-
 Prix de la maintenance : 25.000,- (configuration 1)  20.000,- (configuration 2)  16.000,- (configuration 3)  12.000,- (configuration 4)  8.000,- (configuration 5)  (Également mentionné dans la description de la palette)
 
----  Contact: ExtendedVehicleMaintenance@gmail.com
+---  Support multijoueur complet
+---  CONTACT/SUPPORT : ExtendedVehicleMaintenance@gmail.com
 
 Journal des modifications version 1.0.0.1:
 - Description adaptée
@@ -169,7 +214,27 @@ Journal des modifications version 1.0.0.4:
 
 Changelog Version 1.0.0.5 :
 - Il n'est plus nécessaire de sélectionner le véhicule pour voir les informations de maintenance et pour effectuer l'entretien du véhicule.
-- Le moteur s'éteint à nouveau correctement si la charge du moteur est trop élevée et qu'un autre véhicule que le véhicule actuel est sélectionné.
+- Le moteur se coupe à nouveau correctement si la charge du moteur est trop élevée et si un autre outil que le véhicule actuel est sélectionné.
+- Correction des problèmes de synchronisation multijoueur
+- Correction des problèmes d'argent en multijoueur
+- Correction des problèmes de Dedi
+- Tous les équipements (sauf ceux qui peuvent être conduits) peuvent désormais être réparés normalement.
+- Les véhicules pouvant être conduits ne peuvent plus du tout être réparés normalement.
+- Ajout d'un texte clignotant lors de l'entretien
+- Les dommages fonctionnent désormais correctement en combinaison avec le mod Seasons.
+- Les heures de moteur comptent désormais comme un "entretien de dommages" et les jours comme un "entretien d'intervalle" -- (les dommages ne s'ajustent qu'aux heures de moteur)
+- Le moteur ne peut plus être démarré du tout pendant la maintenance. 
+
+
+Idées qui pourraient être incluses dans la prochaine mise à jour (comment ou si elles sont incluses n'est pas sûr) :
+- Ajustement des dommages à "Maintenance nécessaire".
+- Fenêtre de confirmation si vous voulez vraiment entretenir le véhicule.
+- Ajustement des palettes pour mieux les distinguer les unes des autres.
+- Ajustement individuel du prix de l'entretien pour chaque véhicule
+- Le prix est également ajusté en fonction des dommages/du temps laissé sur le véhicule.
+- La palette est nécessaire en permanence pour l'entretien
+- Les dommages ajustés peuvent être désactivés
+- Autres petites astuces
     ]]>
 	</fr>
     </description>

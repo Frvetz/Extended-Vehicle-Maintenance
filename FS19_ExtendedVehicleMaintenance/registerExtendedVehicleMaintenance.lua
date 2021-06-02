@@ -1,6 +1,5 @@
--- by Frvetz
 -- Contact: ExtendedVehicleMaintenance@gmail.com
--- Date 31.08.2020
+-- Date 23.10.2020
 
 --[[
 Changelog Version 1.0.0.1:
@@ -43,10 +42,40 @@ Changelog Version 1.0.0.4:
 
 Changelog Version 1.0.0.5:
 - Vehicle no longer needs to be selected to see the maintenance information and to service the vehicle.
-- Engine quits again correctly if the engine load is too high and something else is selected than the current vehicle
+- The engine cuts-off again correctly if the engine load is too high and another implement is selected than the current vehicle
+- Multiplayer sync problems fixed
+- Fixed multiplayer money problems
+- Dedi problems fixed
+- All equipment (except drivable) can now be repaired normally.
+- Drivable vehicles can now no longer be repaired normally at all.
+- Added blink text when servicing
+- Damage now works correctly in combination with the Seasons mod
+- Engine hours now count as a "damage maintenance" and days as an "interval maintenance" -- (damage only adjusts to engine hours)
+- Engine can now no longer be started at all during maintenance 
+
+
+Ideas that may be included in the next update (how or if they are included is not sure):
+- Adjustment of the damage at "Maintenance needed".
+- Confirmation window if you really want to service the vehicle
+- Adjustment of the pallets to better distinguish them from each other
+- Individual adjustment of the maintenance price for each vehicle
+- Price is also adjusted according to the damage/time left on the vehicle.
+- Pallet is needed permanently for maintenance
+- Adjusted damage can be deactivated
+- Other small gimmicks
 --]]
 
--- THANKS YOU FOR THE REGISTER.LUA IAN! 
+-- Thanks to Ian for the help with the xml!
+-- Thanks to Glowin for the help with the last bugs and for the lua with the server stuff!
+
+-- Thanks to the main tester: 
+--  SneakyBeaky
+--  Simba
+--  Glowin
+
+
+
+-- THANKS YOU FOR THE REGISTER.LUA IAN!
 
 registerExtendedVehicleMaintenance = {}
 registerExtendedVehicleMaintenance.specName = "ExtendedVehicleMaintenance"
@@ -62,7 +91,7 @@ function registerExtendedVehicleMaintenance:registerSpecialization()
 
 		for vehicleType, vehicle in pairs(g_vehicleTypeManager.vehicleTypes) do
 
-			if vehicle ~= nil and vehicleType ~= "locomotive" and vehicleType ~= "woodCrusherTrailerDrivable" then
+			if vehicle ~= nil and vehicleType ~= "locomotive" and vehicleType ~= "ConveyorBelt" and vehicleType ~= "woodCrusherTrailerDrivable" then
 
 				local isDrivable = false;
 				local hasTBO = false;

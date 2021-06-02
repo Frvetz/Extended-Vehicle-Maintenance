@@ -4,6 +4,8 @@
 
     <texts>
         <text name="information_Motor" text="Maintenance required in: %1.1f engine hours or %1.0f day(s)"/>
+		<text name="dialog_maintenance_text" text="Wartung nötig in: %1.1f Motorstunden oder %1.0f Tag(en)"/>
+        <text name="dialog_dialog_maintenance_title" text="Wartung nötig in: %1.1f Motorstunden oder %1.0f Tag(en)"/>
 		<text name="warning_wartung" text="Maintenance required!"/>
 		<text name="information_wartung" text="Maintenance completed in %1.0f hours and %1.0f minutes"/>
 		<text name="input_VEHICLE_MAINTENANCE" text="Service vehicle"/>
