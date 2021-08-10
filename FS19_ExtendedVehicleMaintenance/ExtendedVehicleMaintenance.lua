@@ -338,7 +338,7 @@ function ExtendedVehicleMaintenance:onUpdate(dt, isActiveForInput, isActiveForIn
 	local spec = self.spec_ExtendedVehicleMaintenance
 	local changeFlag = false
 	
-    if g_directSellDialog.isOpen == true and g_directSellDialog.vehicle.spec_drivable ~= nil then
+    if g_directSellDialog.isOpen == true and g_directSellDialog.vehicle ~= nil and g_directSellDialog.vehicle.spec_drivable ~= nil then
         g_directSellDialog.repairButton.disabled = true
     end
 	
