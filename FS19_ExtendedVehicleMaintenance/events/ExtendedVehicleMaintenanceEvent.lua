@@ -54,14 +54,22 @@ Changelog Version 1.0.0.5:
 - Engine can now no longer be started at all during maintenance 
 
 
-Ideas that may be included in the next update (how or if they are included is not sure):
-- Adjustment of the damage at "Maintenance needed".
-- Confirmation window if you really want to service the vehicle
-- Adjustment of the pallets to better distinguish them from each other
+Changelog Version 1.0.0.6:
+- Confirmation window for maintenance
+- Damage is no longer deducted directly (with Seasons-Mod) for vehicles that already have engine hours (borrowed vehicles from a contract), but starts again as intended without damage.
+- No more error message that appeared when something was sold that was not a vehicle
 - Individual adjustment of the maintenance price for each vehicle
-- Price is also adjusted according to the damage/time left on the vehicle.
-- Pallet is needed permanently for maintenance
-- Adjusted damage can be deactivated
+- Shorter maintenance now costs less and longer maintenance costs more
+- Depending on the length of the maintenance, a certain number of engine hours/days is added to the others (vehicle is not going to be completely repaired)
+- Maintenance system generally improved to make it more realistic
+- Description adjusted
+- Ingame texts adapted
+- Repair feature in the shop has been completely deactivated due to bugs (also for non-driveable equipment)
+- Automatic engine start can be activated again (the engine stall function is then deactivated though)
+
+
+Ideas that may be included in the next update (how or if they are included is not sure):
+- Adjustment of the pallets to better distinguish them from each other (Please send ideas to ExtendedVehicleMaintenance@gmail.com.)
 - Other small gimmicks
 --]]
 
@@ -83,16 +91,23 @@ function ExtendedVehicleMaintenenanceEvent:emptyNew()
 	return event
 end
 
-function ExtendedVehicleMaintenenanceEvent:new(vehicle, wartungsStatus, CurrentMinuteBackup, WartezeitStunden, WartezeitMinuten, OriginalTimeBackup, CostsBackup, DontAllowXmlNumberReset)
+function ExtendedVehicleMaintenenanceEvent:new(vehicle, wartungsStatus, CurrentMinuteBackup, SchadenVergleich, WartezeitStunden, WartezeitMinuten, HoursToAdd, DaysToAdd, OriginalTimeBackup, CostsBackup, DaysBackup, Days, Variable, DifferenzNextMaxCheck, DifferenzDaysNextMaxCheck, DontAllowXmlNumberReset)
     local event = ExtendedVehicleMaintenenanceEvent:emptyNew()
 	    event.vehicle = vehicle
 	    event.wartungsStatus = wartungsStatus
         event.CurrentMinuteBackup = CurrentMinuteBackup
+        event.SchadenVergleich = SchadenVergleich
         event.WartezeitStunden = WartezeitStunden
         event.WartezeitMinuten = WartezeitMinuten
-		
+        event.HoursToAdd = HoursToAdd
+        event.DaysToAdd = DaysToAdd
         event.OriginalTimeBackup = OriginalTimeBackup
         event.CostsBackup = CostsBackup
+        event.DaysBackup = DaysBackup
+        event.Days = Days
+        event.Variable = Variable
+        event.DifferenzNextMaxCheck = DifferenzNextMaxCheck
+        event.DifferenzDaysNextMaxCheck = DifferenzDaysNextMaxCheck
         event.DontAllowXmlNumberReset = DontAllowXmlNumberReset
        -- ExtendedVehicleMaintenance.OriginalTime = OriginalTimeEvent
 	   
@@ -103,11 +118,18 @@ function ExtendedVehicleMaintenenanceEvent:readStream(streamId, connection)
 	self.vehicle = NetworkUtil.readNodeObject(streamId)
 	self.wartungsStatus = streamReadBool(streamId)
     self.CurrentMinuteBackup = streamReadInt32(streamId)
+    self.SchadenVergleich = streamReadInt32(streamId)
     self.WartezeitStunden = streamReadInt32(streamId)
     self.WartezeitMinuten = streamReadInt32(streamId)
-	
+    self.HoursToAdd = streamReadInt32(streamId)
+    self.DaysToAdd = streamReadInt32(streamId)
     self.OriginalTimeBackup = streamReadInt32(streamId)
     self.CostsBackup = streamReadInt32(streamId)
+    self.DaysBackup = streamReadInt32(streamId)
+    self.Days = streamReadInt32(streamId)
+    self.Variable = streamReadInt32(streamId)
+    self.DifferenzNextMaxCheck = streamReadInt32(streamId)
+    self.DifferenzDaysNextMaxCheck = streamReadInt32(streamId)
     self.DontAllowXmlNumberReset = streamReadBool(streamId)
    -- ExtendedVehicleMaintenance.OriginalTime = streamReadInt32(streamId)
 	
@@ -118,26 +140,33 @@ function ExtendedVehicleMaintenenanceEvent:writeStream(streamId, connection)
 	NetworkUtil.writeNodeObject(streamId, self.vehicle)
 	streamWriteBool(streamId, self.wartungsStatus)
 	streamWriteInt32(streamId, self.CurrentMinuteBackup)
+	streamWriteInt32(streamId, self.SchadenVergleich)
 	streamWriteInt32(streamId, self.WartezeitStunden)
 	streamWriteInt32(streamId, self.WartezeitMinuten)
-	
+	streamWriteInt32(streamId, self.HoursToAdd)
+	streamWriteInt32(streamId, self.DaysToAdd)
 	streamWriteInt32(streamId, self.OriginalTimeBackup)
 	streamWriteInt32(streamId, self.CostsBackup)
+	streamWriteInt32(streamId, self.DaysBackup)
+	streamWriteInt32(streamId, self.Days)
+	streamWriteInt32(streamId, self.Variable)
+	streamWriteInt32(streamId, self.DifferenzNextMaxCheck)
+	streamWriteInt32(streamId, self.DifferenzDaysNextMaxCheck)
 	streamWriteBool(streamId, self.DontAllowXmlNumberReset)
 	--streamWriteInt32(streamId, ExtendedVehicleMaintenance.OriginalTime)
 end
 
 function ExtendedVehicleMaintenenanceEvent:run(connection)
-	ExtendedVehicleMaintenance.setWartung(self.vehicle, self.wartungsStatus, self.CurrentMinuteBackup, self.WartezeitStunden, self.WartezeitMinuten, self.OriginalTimeBackup, self.CostsBackup, self.DontAllowXmlNumberReset)
+	ExtendedVehicleMaintenance.setWartung(self.vehicle, self.wartungsStatus, self.CurrentMinuteBackup, self.SchadenVergleich, self.WartezeitStunden, self.WartezeitMinuten, self.HoursToAdd, self.DaysToAdd, self.OriginalTimeBackup, self.CostsBackup, self.DaysBackup, self.Days, self.Variable, self.DifferenzNextMaxCheck, self.DifferenzDaysNextMaxCheck, self.DontAllowXmlNumberReset)
 	if not connection:getIsServer() then
 		g_server:broadcastEvent(self, false, connection, self.vehicle)
 	end
 end
 
-function ExtendedVehicleMaintenenanceEvent.sendEvent(vehicle, wartungsStatus, CurrentMinuteBackup, WartezeitStunden, WartezeitMinuten, OriginalTimeBackup, CostsBackup, DontAllowXmlNumberReset)
+function ExtendedVehicleMaintenenanceEvent.sendEvent(vehicle, wartungsStatus, CurrentMinuteBackup, SchadenVergleich, WartezeitStunden, WartezeitMinuten, HoursToAdd, DaysToAdd, OriginalTimeBackup, CostsBackup, DaysBackup, Days, Variable, DifferenzNextMaxCheck, DifferenzDaysNextMaxCheck, DontAllowXmlNumberReset)
 	if g_server ~= nil then
-		g_server:broadcastEvent(ExtendedVehicleMaintenenanceEvent:new(vehicle, wartungsStatus, CurrentMinuteBackup, WartezeitStunden, WartezeitMinuten, OriginalTimeBackup, CostsBackup, DontAllowXmlNumberReset), nil, nil, vehicle)
+		g_server:broadcastEvent(ExtendedVehicleMaintenenanceEvent:new(vehicle, wartungsStatus, CurrentMinuteBackup, SchadenVergleich, WartezeitStunden, WartezeitMinuten, HoursToAdd, DaysToAdd, OriginalTimeBackup, CostsBackup, DaysBackup, Days, Variable, DifferenzNextMaxCheck, DifferenzDaysNextMaxCheck, DontAllowXmlNumberReset), nil, nil, vehicle)
 	else
-	    g_client:getServerConnection():sendEvent(ExtendedVehicleMaintenenanceEvent:new(vehicle, wartungsStatus, CurrentMinuteBackup, WartezeitStunden, WartezeitMinuten, OriginalTimeBackup, CostsBackup, DontAllowXmlNumberReset))
+	    g_client:getServerConnection():sendEvent(ExtendedVehicleMaintenenanceEvent:new(vehicle, wartungsStatus, CurrentMinuteBackup, SchadenVergleich, WartezeitStunden, WartezeitMinuten, HoursToAdd, DaysToAdd, OriginalTimeBackup, CostsBackup, DaysBackup, Days, Variable, DifferenzNextMaxCheck, DifferenzDaysNextMaxCheck, DontAllowXmlNumberReset))
 	end
 end

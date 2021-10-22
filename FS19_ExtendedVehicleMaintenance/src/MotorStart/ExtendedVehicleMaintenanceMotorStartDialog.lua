@@ -1,4 +1,5 @@
--- Contact: ExtendedVehicleMaintenance@gmail.com
+-- by Frvetz
+-- Contact: ExtendedVehicleMaintenanceMotorStartDialog@gmail.com
 -- Date 23.10.2020
 
 --[[
@@ -76,74 +77,41 @@ Ideas that may be included in the next update (how or if they are included is no
 -- Thanks to Ian for the help with the xml!
 -- Thanks to Glowin for the help with the last bugs and for the lua with the server stuff!
 
--- Thanks to the main tester: 
+-- Thanks to the main testers: 
 --  SneakyBeaky
 --  Simba
 --  Glowin
 
-ExtendedVehicleMaintenenanceEventFinish = {}
-local ExtendedVehicleMaintenenanceEvent_mt = Class(ExtendedVehicleMaintenenanceEventFinish, Event)
-InitEventClass(ExtendedVehicleMaintenenanceEventFinish, "ExtendedVehicleMaintenenanceEventFinish")
-
-function ExtendedVehicleMaintenenanceEventFinish:emptyNew()
-	local event = Event:new(ExtendedVehicleMaintenenanceEvent_mt)
-
-	return event
+ExtendedVehicleMaintenanceMotorStartDialog = {};
+ExtendedVehicleMaintenanceMotorStartDialog.l10nEnv = "FS19_ExtendedVehicleMaintenanceMotorStartDialog";   
+ 
+ 
+function ExtendedVehicleMaintenanceMotorStartDialog:loadMap(name)
+   ExtendedVehicleMaintenanceMotorStartDialog.automaticMotorStartEnabledBackup = g_currentMission.missionInfo.automaticMotorStartEnabled
+  -- g_currentMission.inGameMenu.pageSettingsGame.checkAutoMotorStart.onClickCallback = ExtendedVehicleMaintenance:DIALOG_MOTORSTART()
 end
 
-function ExtendedVehicleMaintenenanceEventFinish:new(vehicle, BackupAgeXML, BackupOperatingTimeXML, MaintenanceTimes, Differenz, DifferenzDays, SchadenVergleich)
-    local event = ExtendedVehicleMaintenenanceEventFinish:emptyNew()
-	event.vehicle = vehicle
-	event.BackupAgeXML = BackupAgeXML
-	event.BackupOperatingTimeXML = BackupOperatingTimeXML
-	event.MaintenanceTimes = MaintenanceTimes
-	event.Differenz = Differenz
-	event.DifferenzDays = DifferenzDays
-	event.SchadenVergleich = SchadenVergleich
-	   --self.wartungsStatus = wartungsStatus
-       -- ExtendedVehicleMaintenance.OriginalTime = OriginalTimeEvent
-	   
-	return event
-end
+function ExtendedVehicleMaintenanceMotorStartDialog:update(dt)
+   -- g_currentMission.inGameMenu.pageSettingsGame.checkAutoMotorStart.onClickCallback = ExtendedVehicleMaintenance:DIALOG_MOTORSTART()
+	--local automaticMotorStartEnabledBackup = g_currentMission.missionInfo.automaticMotorStartEnabled
+    if g_currentMission.missionInfo.automaticMotorStartEnabled ~= ExtendedVehicleMaintenanceMotorStartDialog.automaticMotorStartEnabledBackup then
+	    ExtendedVehicleMaintenanceMotorStartDialog.automaticMotorStartEnabledBackup = g_currentMission.missionInfo.automaticMotorStartEnabled
+		ExtendedVehicleMaintenance:DIALOG_MOTORSTART()
+    end
+--print("automaticMotorStartEnabledBackup: "..tostring( ExtendedVehicleMaintenanceMotorStartDialog.automaticMotorStartEnabledBackup))
+--print("automaticMotorStartEnabled: "..tostring(g_currentMission.missionInfo.automaticMotorStartEnabled))
+end 
 
-function ExtendedVehicleMaintenenanceEventFinish:readStream(streamId, connection)
-	self.vehicle = NetworkUtil.readNodeObject(streamId)
-	    --self.wartungsStatus = streamReadBool(streamId)
-    self.BackupAgeXML = streamReadInt32(streamId)
-    self.BackupOperatingTimeXML = streamReadInt32(streamId)
-    self.MaintenanceTimes = streamReadInt32(streamId)
-    self.Differenz = streamReadInt32(streamId)
-    self.DifferenzDays = streamReadInt32(streamId)
-    self.SchadenVergleich = streamReadInt32(streamId)
 
-   -- ExtendedVehicleMaintenance.OriginalTime = streamReadInt32(streamId)
-	
-	self:run(connection)
-end
+function ExtendedVehicleMaintenance:DIALOG_MOTORSTART()
+    --if not ExtendedVehicleMaintenance.eventActive or self.spec_ExtendedVehicleMaintenance == nil then 
+	--	return; 
+	--end
+	if g_currentMission.missionInfo.automaticMotorStartEnabled == true and g_server ~= nil then
+		g_gui:showInfoDialog({text = g_i18n:getText("dialog_AutoMotorStart", ExtendedVehicleMaintenanceMotorStartDialog.l10nEnv)})
+	end	   
 
-function ExtendedVehicleMaintenenanceEventFinish:writeStream(streamId, connection)
-	NetworkUtil.writeNodeObject(streamId, self.vehicle)
-	--streamWriteBool(streamId, self.wartungsStatus)
-	--streamWriteInt32(streamId, self.CurrentMinuteBackup)
-	streamWriteInt32(streamId, self.BackupAgeXML)
-	streamWriteInt32(streamId, self.BackupOperatingTimeXML)
-	streamWriteInt32(streamId, self.MaintenanceTimes)
-	streamWriteInt32(streamId, self.Differenz)
-	streamWriteInt32(streamId, self.DifferenzDays)
-	streamWriteInt32(streamId, self.SchadenVergleich)
-end
 
-function ExtendedVehicleMaintenenanceEventFinish:run(connection)
-	ExtendedVehicleMaintenance.setFinished(self.vehicle, self.BackupAgeXML, self.BackupOperatingTimeXML, self.MaintenanceTimes, self.Differenz, self.DifferenzDays, self.SchadenVergleich)
-	if not connection:getIsServer() then
-		g_server:broadcastEvent(self, false, connection, self.vehicle)
-	end
+	--print(g_currentMission.missionInfo.automaticMotorStartEnabled)
 end
-
-function ExtendedVehicleMaintenenanceEventFinish.sendEvent(vehicle, BackupAgeXML, BackupOperatingTimeXML, MaintenanceTimes, Differenz, DifferenzDays, SchadenVergleich)
-	if g_server ~= nil then
-		g_server:broadcastEvent(ExtendedVehicleMaintenenanceEventFinish:new(vehicle, BackupAgeXML, BackupOperatingTimeXML, MaintenanceTimes, Differenz, DifferenzDays, SchadenVergleich), nil, nil, vehicle)
-	else
-	    g_client:getServerConnection():sendEvent(ExtendedVehicleMaintenenanceEventFinish:new(vehicle, BackupAgeXML, BackupOperatingTimeXML, MaintenanceTimes, Differenz, DifferenzDays, SchadenVergleich))
-	end
-end
+addModEventListener(ExtendedVehicleMaintenanceMotorStartDialog)

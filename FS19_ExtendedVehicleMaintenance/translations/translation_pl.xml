@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <translationContributors>Luc.Pin</translationContributors>
+
+    <texts>
+        <text name="information_Motor" text="Wymagany serwis za: %1.1f roboczogodzin albo %1.0f dzień/dni"/>
+		
+		<!--new-->
+		<text name="information_palletLength" text="Czas trwania konserwacji: %1.0f h"/>
+        <text name="information_palletOperatingHours" text="Dodatkowe godziny pracy do następnego przeglądu: %1.0f h"/>
+        <text name="information_palletDays" text="Dodatkowe dni do następnej konserwacji: %1.0f d"/>
+		<!--new-->
+		
+	    <text name="dialog_maintenance_text" text="Sprzęt będzie w serwisie przez  %1.0f godzin(y). Serwis przywróci %1.0f godzin pracy silnika i %1.0f dni do kolejnego przeglądu."/>
+        <text name="dialog_dialog_maintenance_title" text="Czy oddać pojazd do przeglądu za %1.0f,-?"/>
+	    <text name="dialog_AutoMotorStart" text="Aktywowano automatyczny start silnika! To wyłącza awarie silnika!"/>
+		<text name="warning_wartung" text="Wymagany serwis!"/>
+		<text name="information_wartung" text="Przegląd i serwis zostaną ukończone za %1.0f godzin i %1.0f minut"/>
+		<text name="input_VEHICLE_MAINTENANCE" text="Przeglad pojazdu"/>
+		<text name="function_Pallet"  text="Ta paleta zawiera części do serwisu twojego pojazdu."/>	
+		<text name="configuration_Time1" text="Czas przeglądu: 1h "/>	
+		<text name="configuration_Time2" text="Czas przeglądu: 4h"/>	
+		<text name="configuration_Time3" text="Czas przeglądu: 8h"/>	
+		<text name="configuration_Time4" text="Czas przeglądu: 24h"/>	
+		<text name="configuration_Time5" text="Czas przeglądu: 48h"/>
+		<text name="warning_moneyChange" text=" Przegląd rozpoczął się i zakończy się za %1.0f godzin. Opłata za przegląd wynosi %1.0f,- i zostanie pobrana z twojego rachunku."/>
+    </texts>
+</l10n>

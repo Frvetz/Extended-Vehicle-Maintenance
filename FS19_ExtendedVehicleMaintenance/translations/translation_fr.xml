@@ -4,12 +4,16 @@
 
     <texts>
         <text name="information_Motor" text="Maintenance requise en: %1.1f heures moteur ou %1.0f jour(s)"/>
-		<text name="dialog_maintenance_text" text="Wartung nötig in: %1.1f Motorstunden oder %1.0f Tag(en)"/>
-        <text name="dialog_dialog_maintenance_title" text="Wartung nötig in: %1.1f Motorstunden oder %1.0f Tag(en)"/>
-		<text name="warning_wartung" text="Entretien nécessaire!"/>
+		<text name="information_palletLength" text="Durée de l'entretien : %1.0f h"/>
+        <text name="information_palletOperatingHours" text="Heures de fonctionnement supplémentaires jusqu'au prochain entretien : %1.0f h"/>
+        <text name="information_palletDays" text="Jours supplémentaires jusqu'à la prochaine maintenance : %1.0f d"/>
+		<text name="dialog_maintenance_text" text="Il serait inopérant pendant %1,0f heure(s), mais opérationnel pendant %1,0f heure(s) moteur supplémentaire(s) et %1,0f jour(s)."/>
+        <text name="dialog_dialog_maintenance_title" text="Véhicule de service pour %1.0f,- ?"/>
+		<text name="dialog_AutoMotorStart" text="Démarrage automatique du moteur activé ! Cela désactive la fonction de décrochage du moteur !"/>
+		<text name="warning_wartung" text="Entretien nécessaire !"/>
 		<text name="information_wartung" text="La maintenance se terminera en %1.0f heures et %1.0f minutes"/>
 		<text name="input_VEHICLE_MAINTENANCE" text="Effectuer la maintenance"/>
-		<text name="function_Pallet"  text="Cette palette est utilisée pour l'entretien des machines. Prix ​​d'entretien: 25.000,- 20.000,- 16.000,- 12.000,- 8.000,-"/>	
+		<text name="function_Pallet"  text="Cette palette est utilisée pour l'entretien des machines."/>	
 		<text name="configuration_Time1" text="Attente: Une heure"/>	
 		<text name="configuration_Time2" text="Attente: Quatre heures"/>	
 		<text name="configuration_Time3" text="Attente: Huit heures"/>	

@@ -1,4 +1,5 @@
--- Contact: ExtendedVehicleMaintenance@gmail.com
+-- by Frvetz
+-- Contact: ExtendedVehicleMaintenanceShopRepair@gmail.com
 -- Date 23.10.2020
 
 --[[
@@ -76,74 +77,29 @@ Ideas that may be included in the next update (how or if they are included is no
 -- Thanks to Ian for the help with the xml!
 -- Thanks to Glowin for the help with the last bugs and for the lua with the server stuff!
 
--- Thanks to the main tester: 
+-- Thanks to the main testers: 
 --  SneakyBeaky
 --  Simba
 --  Glowin
 
-ExtendedVehicleMaintenenanceEventFinish = {}
-local ExtendedVehicleMaintenenanceEvent_mt = Class(ExtendedVehicleMaintenenanceEventFinish, Event)
-InitEventClass(ExtendedVehicleMaintenenanceEventFinish, "ExtendedVehicleMaintenenanceEventFinish")
+ExtendedVehicleMaintenanceShopRepair = {};
+--ExtendedVehicleMaintenanceShopRepair.l10nEnv = "FS19_ExtendedVehicleMaintenanceShopRepair";
 
-function ExtendedVehicleMaintenenanceEventFinish:emptyNew()
-	local event = Event:new(ExtendedVehicleMaintenenanceEvent_mt)
 
-	return event
-end
 
-function ExtendedVehicleMaintenenanceEventFinish:new(vehicle, BackupAgeXML, BackupOperatingTimeXML, MaintenanceTimes, Differenz, DifferenzDays, SchadenVergleich)
-    local event = ExtendedVehicleMaintenenanceEventFinish:emptyNew()
-	event.vehicle = vehicle
-	event.BackupAgeXML = BackupAgeXML
-	event.BackupOperatingTimeXML = BackupOperatingTimeXML
-	event.MaintenanceTimes = MaintenanceTimes
-	event.Differenz = Differenz
-	event.DifferenzDays = DifferenzDays
-	event.SchadenVergleich = SchadenVergleich
-	   --self.wartungsStatus = wartungsStatus
-       -- ExtendedVehicleMaintenance.OriginalTime = OriginalTimeEvent
-	   
-	return event
-end
-
-function ExtendedVehicleMaintenenanceEventFinish:readStream(streamId, connection)
-	self.vehicle = NetworkUtil.readNodeObject(streamId)
-	    --self.wartungsStatus = streamReadBool(streamId)
-    self.BackupAgeXML = streamReadInt32(streamId)
-    self.BackupOperatingTimeXML = streamReadInt32(streamId)
-    self.MaintenanceTimes = streamReadInt32(streamId)
-    self.Differenz = streamReadInt32(streamId)
-    self.DifferenzDays = streamReadInt32(streamId)
-    self.SchadenVergleich = streamReadInt32(streamId)
-
-   -- ExtendedVehicleMaintenance.OriginalTime = streamReadInt32(streamId)
-	
-	self:run(connection)
-end
-
-function ExtendedVehicleMaintenenanceEventFinish:writeStream(streamId, connection)
-	NetworkUtil.writeNodeObject(streamId, self.vehicle)
-	--streamWriteBool(streamId, self.wartungsStatus)
-	--streamWriteInt32(streamId, self.CurrentMinuteBackup)
-	streamWriteInt32(streamId, self.BackupAgeXML)
-	streamWriteInt32(streamId, self.BackupOperatingTimeXML)
-	streamWriteInt32(streamId, self.MaintenanceTimes)
-	streamWriteInt32(streamId, self.Differenz)
-	streamWriteInt32(streamId, self.DifferenzDays)
-	streamWriteInt32(streamId, self.SchadenVergleich)
-end
-
-function ExtendedVehicleMaintenenanceEventFinish:run(connection)
-	ExtendedVehicleMaintenance.setFinished(self.vehicle, self.BackupAgeXML, self.BackupOperatingTimeXML, self.MaintenanceTimes, self.Differenz, self.DifferenzDays, self.SchadenVergleich)
-	if not connection:getIsServer() then
-		g_server:broadcastEvent(self, false, connection, self.vehicle)
+function ExtendedVehicleMaintenanceShopRepair:update(dt)
+    if g_directSellDialog.isOpen == true and g_directSellDialog.vehicle ~= nil and g_directSellDialog.vehicle.spec_drivable ~= nil then
+        g_directSellDialog.repairButton.disabled = true
+		--print("OPEN")
+    end
+	if g_currentMission.shopMenu.repairButtonInfo ~= nil then
+		g_currentMission.shopMenu.repairButtonInfo = nil
+	end
+	if self.objectInRange ~= nil and self.objectInRange:isa(Bale) then
+		print("TEST")
+	end
+	if g_currentMission.player.lastObjectInRange ~= nil then
+		print(g_currentMission.player.lastObjectInRange)
 	end
 end
-
-function ExtendedVehicleMaintenenanceEventFinish.sendEvent(vehicle, BackupAgeXML, BackupOperatingTimeXML, MaintenanceTimes, Differenz, DifferenzDays, SchadenVergleich)
-	if g_server ~= nil then
-		g_server:broadcastEvent(ExtendedVehicleMaintenenanceEventFinish:new(vehicle, BackupAgeXML, BackupOperatingTimeXML, MaintenanceTimes, Differenz, DifferenzDays, SchadenVergleich), nil, nil, vehicle)
-	else
-	    g_client:getServerConnection():sendEvent(ExtendedVehicleMaintenenanceEventFinish:new(vehicle, BackupAgeXML, BackupOperatingTimeXML, MaintenanceTimes, Differenz, DifferenzDays, SchadenVergleich))
-	end
-end
+addModEventListener(ExtendedVehicleMaintenanceShopRepair)

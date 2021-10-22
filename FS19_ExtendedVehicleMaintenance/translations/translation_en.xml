@@ -4,12 +4,16 @@
 
     <texts>
         <text name="information_Motor" text="Maintenance required in: %1.1f engine hours or %1.0f day(s)"/>
-		<text name="dialog_maintenance_text" text="Wartung nötig in: %1.1f Motorstunden oder %1.0f Tag(en)"/>
-        <text name="dialog_dialog_maintenance_title" text="Wartung nötig in: %1.1f Motorstunden oder %1.0f Tag(en)"/>
+		<text name="information_palletLength" text="Duration of maintenance: %1.0f h"/>
+        <text name="information_palletOperatingHours" text="Additional operating hours until next maintenance: %1.0f h"/>
+        <text name="information_palletDays" text="Additional days until next maintenance: %1.0f d"/>
+		<text name="dialog_maintenance_text" text="It would be inoperable for %1.0f hour(s), but operational for an additional %1.0f engine hour(s) and %1.0f day(s)."/>
+        <text name="dialog_dialog_maintenance_title" text="Service vehicle for %1.0f,-?"/>
+		<text name="dialog_AutoMotorStart" text="Automatic engine start activated! This disables the engine stall function!"/>
 		<text name="warning_wartung" text="Maintenance required!"/>
 		<text name="information_wartung" text="Maintenance completed in %1.0f hours and %1.0f minutes"/>
 		<text name="input_VEHICLE_MAINTENANCE" text="Service vehicle"/>
-		<text name="function_Pallet"  text="This pallet is used for the maintenance of your vehicles. Maintenance prices: 25.000,- 20.000,- 16.000,- 12.000,- 8.000,-"/>	
+		<text name="function_Pallet"  text="This pallet is used for the maintenance of your vehicles."/>	
 		<text name="configuration_Time1" text="Waiting time: One hour"/>	
 		<text name="configuration_Time2" text="Waiting time: Four hours"/>	
 		<text name="configuration_Time3" text="Waiting time: Eight hours"/>	
