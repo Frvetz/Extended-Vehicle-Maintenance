@@ -20,84 +20,87 @@ KEIN NEUES SAVEGAME MEHR NÖTIG
 
 Preis der Palette: 500,-
 Wartungspreise: Individuelle Anpassung an die jeweilige Maschine und Wartezeit
+
+- Wartungsinformationen (↓) werden auch im Spiel angezeigt, wenn man sich einer Palette nähert! - (Funktion des Renderns wurde von Ifko[nator] gemacht und ist aus dem Mod "Object-Info"! Danke, dass ich diese hier Verwenden durfte!)
 Wartedauer + zusätzliche Motorstunden (Tage passen sich mit Seasons an): 1 h warten (+3 Motorstunden, +1 Tag), 4 h warten (+9 Motorstunden, +5 Tage), 8 h warten (+18 Motorstunden, +12 Tage), 24 h warten (+35 Motorstunden, +36 Tage), 48 h warten (+48 Motorstunden, +45 Tage)
 
 ---  Vollständige Multiplayer-Unterstützung
 !-!-!-!  KONTAKT/SUPPORT  /  "Ich würde gerne eine Version ohne die Wartung nach Tagen haben": ExtendedVehicleMaintenance@gmail.com
 
 Changelog Version 1.0.0.1:
-- Beschreibung angepasst
-- Neues Icon
-- Tagelimit passt sich an den Seasons-Mod an
-- Motorfehlstart ist nach Erreichen des Limits möglich
-- Motor kann bei zu hoher Motorlast absterben
-- Bugs bei mehrmaligem Warten behoben
-- Zieht die Motorstunden und das Alter nicht mehr beim ersten Laden ab
-- Fehler mit "Großeinkauf-Mod" behoben  (Palette konnte nicht gekauft werden)
-- Multiplayer Probleme behoben
+- Beschreibung angepasst.
+- Neues Icon.
+- Tagelimit passt sich an den Seasons-Mod an.
+- Motorfehlstart ist nach Erreichen des Limits möglich.
+- Motor kann bei zu hoher Motorlast absterben.
+- Bugs bei mehrmaligem Warten behoben.
+- Zieht die Motorstunden und das Alter nicht mehr beim ersten Laden ab.
+- Fehler mit "Großeinkauf-Mod" behoben  (Palette konnte nicht gekauft werden).
+- Multiplayer Probleme behoben.
 
 
 Changelog Version 1.0.0.2:
-- FPS Probleme behoben
-- Dedicated Server Probleme behoben
-- Licht der Lampe entfernt
-- Beschreibung leicht angepasst
-- Fehler behoben, bei dem die Taste zum Warten nicht aufgetaucht ist
-- Fehler behoben, bei dem der alte Zustand des Fahrzeuges nicht wiederhergestellt wurde
+- FPS Probleme behoben.
+- Dedicated Server Probleme behoben.
+- Licht der Lampe entfernt.
+- Beschreibung leicht angepasst.
+- Fehler behoben, bei dem die Taste zum Warten nicht aufgetaucht ist.
+- Fehler behoben, bei dem der alte Zustand des Fahrzeuges nicht wiederhergestellt wurde.
 
 
 Changelog Version 1.0.0.3:
-- Beschreibung angepasst
-- Fehler behoben, bei dem die Taste zum Warten immer noch nicht aufgetaucht ist
-- Die restliche Zeit, die für die Wartung benötigt wird, wird nun abgespeichert und bei erneutem Betreten des Spielstandes fortgesetzt
-- Wartung kann nun jeder Zeit durchgeführt werden
-- Wartung ist mit dem Seasons-Mod nun nur noch 1 Mal pro Saison notwendig
-- An der Palette kann nun konfiguriert werden, wie lange es dauert, bis die Wartung abgeschlossen ist. (Geringere Zeit = Höhere Kosten beim Warten)
-- Die Wartung kostet nun einen bestimmten Betrag
-- Schadenssystem aus dem Ls19 passt sich nun der Wartung an
+- Beschreibung angepasst.
+- Fehler behoben, bei dem die Taste zum Warten immer noch nicht aufgetaucht ist.
+- Die restliche Zeit, die für die Wartung benötigt wird, wird nun abgespeichert und bei erneutem Betreten des Spielstandes fortgesetzt.
+- Wartung kann nun jeder Zeit durchgeführt werden.
+- Wartung ist mit dem Seasons-Mod nun nur noch 1 Mal pro Saison notwendig.
+- An der Palette kann nun konfiguriert werden, wie lange es dauert, bis die Wartung abgeschlossen ist. (Geringere Zeit = Höhere Kosten beim Warten).
+- Die Wartung kostet nun einen bestimmten Betrag.
+- Schadenssystem aus dem Ls19 passt sich nun der Wartung an.
 
 
 Changelog Version 1.0.0.4:
-- Beschreibung leicht angepasst
-- Error mit Maschinen, die keinen Motor haben, behoben (Beispielsweise: Förderband)
-- Übersetzung der Konfiguration hinzugefügt
+- Beschreibung leicht angepasst.
+- Error mit Maschinen, die keinen Motor haben, behoben (Beispielsweise: Förderband).
+- Übersetzung der Konfiguration hinzugefügt.
 
 
 Changelog Version 1.0.0.5:
-- Fahrzeug muss nun nicht mehr ausgewählt sein, um die Informationen für die Wartung zu sehen und um das Fahrzeug zu warten
-- Motor stirbt wieder korrekt ab, wenn die Motorlast zu hoch ist und ein anderes Gerät ausgewählt ist als das aktuelle Fahrzeug
-- Multiplayer-Sync-Probleme behoben
-- Multiplayer-Geld-Probleme behoben
-- Dedi-Probleme behoben
+- Fahrzeug muss nun nicht mehr ausgewählt sein, um die Informationen für die Wartung zu sehen und um das Fahrzeug zu warten.
+- Motor stirbt wieder korrekt ab, wenn die Motorlast zu hoch ist und ein anderes Gerät ausgewählt ist als das aktuelle Fahrzeug.
+- Multiplayer-Sync-Probleme behoben.
+- Multiplayer-Geld-Probleme behoben.
+- Dedi-Probleme behoben.
 - Alle Geräte (außer fahrbare) können nun wieder normal repariert werden.
 - Fahrbare Fahrzeuge können nun gar nicht mehr normal repariert werden.
-- Blink-Text, wenn gewartet wird, hinzugefügt
-- Schaden funktioniert nun richtig in kombination mit dem Seasons-Mod
-- Die Motorstunden gelten jetzt als "Schadens-Wartung" und die Tage als "Intervall-Wartung" -- (Schaden passt sich nur noch den Motorstunden an)
-- Motor kann bei der Wartung nun gar nicht mehr gestartet werden 
+- Blink-Text, wenn gewartet wird, hinzugefügt.
+- Schaden funktioniert nun richtig in kombination mit dem Seasons-Mod.
+- Die Motorstunden gelten jetzt als "Schadens-Wartung" und die Tage als "Intervall-Wartung" -- (Schaden passt sich nur noch den Motorstunden an).
+- Motor kann bei der Wartung nun gar nicht mehr gestartet werden.
 
 
 Changelog Version 1.0.0.6:
-- Bestätigungsfenster für die Wartung
-- Schaden wird mit Seasons-Mod bei Fahrzeugen die bereits schon Motorstunden haben (ausgeliehene Geräte bei einem Auftrag) nicht mehr direkt abgezogen, sondern startet wieder wie gewollt ohne Schaden
-- Keine Fehlermeldung mehr die auftritt, wenn etwas verkauft wird, das kein Fahrzeug ist
-- Individuelle Anpassung des Wartungspreises für jedes Fahrzeug
-- Kürzere Wartung kostet jetzt weniger und dafür eine längere Wartung mehr
-- Je nach Länge der Wartung, wird eine bestimmte Anzahl an Motorstunden/Tagen zu den übrigen addiert (Fahrzeug wird nicht komplett repariert)
-- Wartungssystem generell realistischer gemacht
-- Beschreibung angepasst
-- Ingame-Texte angepasst
-- Reparatur im Shop wurde aufgrund von Bugs vollständig deaktiviert (auch für nicht fahrbare Geräte)
-- Automatischer Motorstart kann wieder aktiviert werden (die Funktion des Motorabsterbens wird dann allerdings deaktiviert)
+- Bestätigungsfenster für die Wartung.
+- Schaden wird mit Seasons-Mod bei Fahrzeugen die bereits schon Motorstunden haben (ausgeliehene Geräte bei einem Auftrag) nicht mehr direkt abgezogen, sondern startet wieder wie gewollt ohne Schaden.
+- Keine Fehlermeldung mehr die auftritt, wenn etwas verkauft wird, das kein Fahrzeug ist.
+- Individuelle Anpassung des Wartungspreises für jedes Fahrzeug.
+- Kürzere Wartung kostet jetzt weniger und dafür eine längere Wartung mehr.
+- Je nach Länge der Wartung, wird eine bestimmte Anzahl an Motorstunden/Tagen zu den übrigen addiert (Fahrzeug wird nicht komplett repariert).
+- Wartungssystem generell realistischer gemacht.
+- Beschreibung angepasst.
+- Ingame-Texte angepasst.
+- Reparatur im Shop wurde aufgrund von Bugs vollständig deaktiviert (auch für nicht fahrbare Geräte).
+- Automatischer Motorstart kann wieder aktiviert werden (die Funktion des Motorabsterbens wird dann allerdings deaktiviert).
 
 
 Changelog Version 1.0.0.7:
-- Fehler behoben, bei dem nach der Wartung nichts passiert ist (weiterhin "Wartung benötigt" bzw. die gleiche Anzahl an übrigen Motorstunden/Tagen)
+- Fehler behoben, bei dem nach der Wartung nichts passiert ist (weiterhin "Wartung benötigt" bzw. die gleiche Anzahl an übrigen Motorstunden/Tagen).
 
 
-Ideen die im nächsten Update vielleicht enthalten sein werden (wie oder ob sie enthalten sind ist nicht sicher):
-- Anpassung der Paletten, um diese besser auseinander halten zu können (Ideen bitte an ExtendedVehicleMaintenance@gmail.com)
-- Weitere kleine Spielereien
+Changelog Version 1.0.0.8:
+- Beschreibung leicht angepasst.
+- Text erscheint beim Nähern einer Palette (zu Fuß), der die konfigurierte Wartezeit/addierte Tage -/addierte Motorstunden bis zur nächsten Wartung besser anzeigt und ein Auswählen der richtigen Palette vereinfacht.
+- Polnische Übersetzung hinzugefügt.
     ]]>
 	</de>
 	<en>
@@ -114,84 +117,87 @@ NO MORE NEED FOR A NEW SAVEGAME
 
 Pallet price: 500,-
 Maintenance prices: Individual adjustment to the specific machine and maintenance duration.
+
+- Maintenance information (↓) is also displayed in the game when approaching a pallet! - (The rendering function was made by Ifko[nator] and is from the mod "Object-Info"! Thank you for letting me use this here!)
 Maintenance duration + added engine hours (days adjust with seasons-mod): 1h maintenance (+3 engine hours, +1 day), 4 h maintenance (+9 engine hours, +5 days), 8h maintenance (+18 engine hours, +12 days), 24h maintenance (+35 engine hours, +36 days), 48h maintenance (+48 engine hours, +45 days)
 
 ---  Full multiplayer support
 !-!-!-!  CONTACT/SUPPORT  /  "I would like to have a version without the maintenance by days": ExtendedVehicleMaintenance@gmail.com
 
 Changelog Version 1.0.0.1:
-- Description adapted
-- New icon
-- Day limit adapts to the Seasons-Mod
-- Engine may fail to start when starting the motor after reaching the limit
-- Engine can stall if engine load is too high
-- Bugs fixed when servicing several times
-- No longer subtracts engine hours and age on first load
-- Fixed a bug with "bulk buy mod" (pallet could not be bought)
-- Fixed multiplayer problems
+- Description adapted.
+- New icon.
+- Day limit adapts to the Seasons-Mod.
+- Engine may fail to start when starting the motor after reaching the limit.
+- Engine can stall if engine load is too high.
+- Bugs fixed when servicing several times.
+- No longer subtracts engine hours and age on first load.
+- Fixed a bug with "bulk buy mod" (pallet could not be bought).
+- Fixed multiplayer problems.
 
 
 Changelog Version 1.0.0.2:
-- FPS problems fixed
-- Dedicated server problems fixed
-- Lamp light removed
-- Description slightly adjusted
-- Fixed bug where the button did not appear
-- Fixed bug where the old state of the vehicle was not restored
+- FPS problems fixed.
+- Dedicated server problems fixed.
+- Lamp light removed.
+- Description slightly adjusted.
+- Fixed bug where the button did not appear.
+- Fixed bug where the old state of the vehicle was not restored.
 
 
 Changelog Version 1.0.0.3:
-- Description adapted
+- Description adapted.
 - Fixed a bug where the button has still not appeared.
-- The remaining time needed for maintenance is now saved and continued when re-entering the savegame
-- Maintenance can now be done at any time
-- Maintenance is now only necessary 1 time per season with the Seasons-Mod
-- At the pallet it is now possible to configure how long it takes until the maintenance is completed. (Less time = higher costs for maintenance)
-- Maintenance now costs a certain amount
-- Damage system from the Fs19 now adapts to maintenance
+- The remaining time needed for maintenance is now saved and continued when re-entering the savegame.
+- Maintenance can now be done at any time.
+- Maintenance is now only necessary 1 time per season with the Seasons-Mod.
+- At the pallet it is now possible to configure how long it takes until the maintenance is completed. (Less time = higher costs for maintenance).
+- Maintenance now costs a certain amount.
+- Damage system from the Fs19 now adapts to maintenance.
 
 
 Changelog Version 1.0.0.4:
 - Description slightly adapted
-- Fixed error with machines that do not have a motor (for example: conveyor belt)
-- Added translation for the configuration
+- Fixed error with machines that do not have a motor (for example: conveyor belt).
+- Added translation for the configuration.
 
 
 Changelog Version 1.0.0.5:
 - Vehicle no longer needs to be selected to see the maintenance information and to service the vehicle.
-- The engine cuts-off again correctly if the engine load is too high and another implement is selected than the current vehicle
-- Multiplayer sync problems fixed
-- Fixed multiplayer money problems
-- Dedi problems fixed
+- The engine cuts-off again correctly if the engine load is too high and another implement is selected than the current vehicle.
+- Multiplayer sync problems fixed.
+- Fixed multiplayer money problems.
+- Dedi problems fixed.
 - All equipment (except drivable) can now be repaired normally.
 - Drivable vehicles can now no longer be repaired normally at all.
-- Added blink text when servicing
-- Damage now works correctly in combination with the Seasons mod
-- Engine hours now count as a "damage maintenance" and days as an "interval maintenance" -- (damage only adjusts to engine hours)
-- Engine can now no longer be started at all during maintenance 
+- Added blink text when servicing.
+- Damage now works correctly in combination with the Seasons mod.
+- Engine hours now count as a "damage maintenance" and days as an "interval maintenance" -- (damage only adjusts to engine hours).
+- Engine can now no longer be started at all during maintenance.
 
 
 Changelog Version 1.0.0.6:
-- Confirmation window for maintenance
+- Confirmation window for maintenance.
 - Damage is no longer deducted directly (with Seasons-Mod) for vehicles that already have engine hours (borrowed vehicles from a contract), but starts again as intended without damage.
-- No more error message that appeared when something was sold that was not a vehicle
-- Individual adjustment of the maintenance price for each vehicle
-- Shorter maintenance now costs less and longer maintenance costs more
-- Depending on the length of the maintenance, a certain number of engine hours/days is added to the others (vehicle is not going to be completely repaired)
-- Maintenance system generally improved to make it more realistic
-- Description adjusted
-- Ingame texts adapted
-- Repair feature in the shop has been completely deactivated due to bugs (also for non-driveable equipment)
-- Automatic engine start can be activated again (the engine stall function is then deactivated though)
+- No more error message that appeared when something was sold that was not a vehicle.
+- Individual adjustment of the maintenance price for each vehicle.
+- Shorter maintenance now costs less and longer maintenance costs more.
+- Depending on the length of the maintenance, a certain number of engine hours/days is added to the others (vehicle is not going to be completely repaired).
+- Maintenance system generally improved to make it more realistic.
+- Description adjusted.
+- Ingame texts adapted.
+- Repair feature in the shop has been completely deactivated due to bugs (also for non-driveable equipment).
+- Automatic engine start can be activated again (the engine stall function is then deactivated though).
 
 
 Changelog Version 1.0.0.7:
 - Fixed bug where nothing happened after maintenance (still "maintenance needed" or the same number of remaining engine hours/days).
 
 
-Ideas that may be included in the next update (how or if they are included is not sure):
-- Adjustment of the pallets to better distinguish them from each other (Please send ideas to ExtendedVehicleMaintenance@gmail.com.)
-- Other small gimmicks
+Changelog Version 1.0.0.8:
+- Description slightly adapted.
+- Text appears when approaching a pallet (on foot) that better indicates the configured waiting time/added days/added engine hours until the next maintenance and makes it easier to identify the correct pallet.
+- Polish translation added.
     ]]>	
 	</en>	
 	<fr>
@@ -208,85 +214,87 @@ PLUS BESOIN D'UNE NOUVELLE SAUVEGARDE
 
 Prix des palettes : 500,-
 Prix de la maintenance : Adaptation individuelle à la machine spécifique et à la durée d'entretien.
+
+- Les informations de maintenance (↓) sont également affichées dans le jeu lorsque vous approchez d'une palette ! - (La fonction de rendu a été faite par Ifko [nator] et provient du mod "Object-Info" ! Merci de me laisser l'utiliser ici).
 Durée d'entretien + heures de moteur ajoutées (jours à ajuster avec les saisons) : 1 h d'entretien (+3 heures de moteur, +1 jour), 4 h d'entretien (+9 heures de moteur, +5 jours), 8 h d'entretien (+18 heures de moteur, +12 jours), 24 h d'entretien (+35 heures de moteur, +36 jours), 48 h d'entretien (+48 heures de moteur, +45 jours).
 
 ---  Support multijoueur complet
 !-!-!-!  CONTACT/SUPPORT  /  "J'aimerais avoir une version sans la maintenance par jours": ExtendedVehicleMaintenance@gmail.com
 
 Journal des modifications version 1.0.0.1 :
-- Description adaptée
-- Nouvelle icône
-- La limite de jour s'adapte au Seasons-Mod
-- Le moteur peut ne pas démarrer lors du démarrage du moteur après avoir atteint la limite
-- Le moteur peut caler si la charge du moteur est trop élevée
-- Bugs corrigés lors de l'entretien à plusieurs reprises
-- Ne soustrait plus les heures et l'âge du moteur lors du premier chargement
-- Correction d'un bug avec "achat en gros mod" (la palette ne pouvait pas être achetée)
-- Correction de problèmes multijoueurs
+- Description adaptée.
+- Nouvelle icône.
+- La limite de jour s'adapte au Seasons-Mod.
+- Le moteur peut ne pas démarrer lors du démarrage du moteur après avoir atteint la limite.
+- Le moteur peut caler si la charge du moteur est trop élevée.
+- Bugs corrigés lors de l'entretien à plusieurs reprises.
+- Ne soustrait plus les heures et l'âge du moteur lors du premier chargement.
+- Correction d'un bug avec "achat en gros mod" (la palette ne pouvait pas être achetée).
+- Correction de problèmes multijoueurs.
 
 
 Journal des modifications version 1.0.0.2 :
--Changelog Version 1.0.0.2 :
-- Correction des problèmes de FPS
-- Correction des problèmes de serveurs dédiés
-- Suppression de la lumière de la lampe
-- Description légèrement ajustée
-- Correction d'un bug où le bouton n'apparaissait pas
-- Correction d'un bug où l'ancien état du véhicule n'était pas restauré
+- Correction des problèmes de FPS.
+- Correction des problèmes de serveurs dédiés.
+- Suppression de la lumière de la lampe.
+- Description légèrement ajustée.
+- Correction d'un bug où le bouton n'apparaissait pas.
+- Correction d'un bug où l'ancien état du véhicule n'était pas restauré.
 
 
 Journal des modifications version 1.0.0.3 :
-- Description adaptée
+- Description adaptée.
 - Correction d'un bug où le bouton n'apparaissait toujours pas.
 - Le temps restant nécessaire à la maintenance est maintenant sauvegardé et poursuivi lors de la ré-entrée dans la sauvegarde.
-- La maintenance peut maintenant être effectuée à tout moment
+- La maintenance peut maintenant être effectuée à tout moment.
 - La maintenance n'est maintenant nécessaire qu'une fois par saison avec le Seasons-Mod.
-- Au niveau de la palette, il est maintenant possible de configurer le temps nécessaire à la maintenance. (Moins de temps = coûts d'entretien plus élevés)
-- La maintenance coûte maintenant un certain montant
+- Au niveau de la palette, il est maintenant possible de configurer le temps nécessaire à la maintenance. (Moins de temps = coûts d'entretien plus élevés).
+- La maintenance coûte maintenant un certain montant.
 - Le système de dommages de Farming Simulator 2019 s'adapte désormais à la maintenance.
 
 
 Journal des modifications version 1.0.0.4 :
-- Description légèrement adaptée
-- Correction d'une erreur avec des machines sans moteur (par exemple: bande transporteuse)
-- Ajout d'une traduction pour la configuration
+- Description légèrement adaptée.
+- Correction d'une erreur avec des machines sans moteur (par exemple: bande transporteuse).
+- Ajout d'une traduction pour la configuration.
 
 
-Changelog Version 1.0.0.5 :
+Journal des modifications version 1.0.0.5 :
 - Il n'est plus nécessaire de sélectionner le véhicule pour voir les informations de maintenance et pour effectuer l'entretien du véhicule.
 - Le moteur se coupe à nouveau correctement si la charge du moteur est trop élevée et si un autre outil que le véhicule actuel est sélectionné.
-- Correction des problèmes de synchronisation multijoueur
-- Correction des problèmes d'argent en multijoueur
-- Correction des problèmes de Dedi
+- Correction des problèmes de synchronisation multijoueur.
+- Correction des problèmes d'argent en multijoueur.
+- Correction des problèmes de Dedi.
 - Tous les équipements (sauf ceux qui peuvent être conduits) peuvent désormais être réparés normalement.
 - Les véhicules pouvant être conduits ne peuvent plus du tout être réparés normalement.
-- Ajout d'un texte clignotant lors de l'entretien
+- Ajout d'un texte clignotant lors de l'entretien.
 - Les dommages fonctionnent désormais correctement en combinaison avec le mod Seasons.
-- Les heures de moteur comptent désormais comme un "entretien de dommages" et les jours comme un "entretien d'intervalle" -- (les dommages ne s'ajustent qu'aux heures de moteur)
+- Les heures de moteur comptent désormais comme un "entretien de dommages" et les jours comme un "entretien d'intervalle" -- (les dommages ne s'ajustent qu'aux heures de moteur).
 - Le moteur ne peut plus être démarré du tout pendant la maintenance.
 
 
-Changelog Version 1.0.0.6 :
-- Fenêtre de confirmation pour la maintenance
+Journal des modifications version 1.0.0.6 :
+- Fenêtre de confirmation pour la maintenance.
 - Les dégâts ne sont plus déduits directement (avec Seasons-Mod) pour les véhicules qui ont déjà des heures de moteur (véhicules empruntés d'un contrat), mais redémarre comme prévu sans dégâts.
-- Plus de message d'erreur qui apparaissait lorsqu'on vendait quelque chose qui n'était pas un véhicule
-- Adaptation individuelle du prix de l'entretien pour chaque véhicule
-- Un entretien plus court coûte désormais moins cher et un entretien plus long coûte plus cher
-- En fonction de la durée de l'entretien, un certain nombre d'heures/jours moteur est ajouté aux autres (le véhicule ne va pas être complètement réparé)
-- Système d'entretien généralement amélioré pour le rendre plus réaliste
-- Description ajustée
-- Adaptation des textes dans le jeu
+- Plus de message d'erreur qui apparaissait lorsqu'on vendait quelque chose qui n'était pas un véhicule.
+- Adaptation individuelle du prix de l'entretien pour chaque véhicule.
+- Un entretien plus court coûte désormais moins cher et un entretien plus long coûte plus cher.
+- En fonction de la durée de l'entretien, un certain nombre d'heures/jours moteur est ajouté aux autres (le véhicule ne va pas être complètement réparé).
+- Système d'entretien généralement amélioré pour le rendre plus réaliste.
+- Description ajustée.
+- Adaptation des textes dans le jeu.
 - La fonction de réparation dans le magasin a été complètement désactivée en raison de bugs (également pour les équipements non pilotables).
 - Le démarrage automatique du moteur peut à nouveau être activé (la fonction de blocage du moteur est cependant désactivée).
 
 
-Changelog Version 1.0.0.7 :
+Journal des modifications version 1.0.0.7 :
 - Correction du bogue où rien ne se passait après la maintenance (toujours "maintenance nécessaire" ou le même nombre d'heures/jours moteur restants).
 
 
-Idées qui pourraient être incluses dans la prochaine mise à jour (comment ou si elles sont incluses n'est pas sûr) :
-- Ajustement des palettes pour mieux les distinguer les unes des autres. (Veuillez envoyer vos idées à ExtendedVehicleMaintenance@gmail.com.)
-- Autres petites astuces
+Journal des modifications version 1.0.0.8 :
+- Description légèrement adaptée.
+- Un texte apparaît à l'approche d'une palette (à pied) qui indique mieux le temps d'attente configuré/les jours ajoutés/les heures de moteur ajoutées jusqu'à la prochaine maintenance et facilite l'identification de la bonne palette.
+- Traduction polonaise ajoutée.
     ]]>
 	</fr>
 	<pl>
@@ -303,89 +311,92 @@ NIE MA JUŻ POTRZEBY TWORZENIA NOWEGO SAVEGAME'U
 
 Cena palety: 500,-.
 Ceny utrzymania: Indywidualne dopasowanie do konkretnej maszyny i czasu trwania konserwacji.
+
+- Informacje o konserwacji (↓) są również wyświetlane w grze podczas podchodzenia do palety! - (Funkcja renderowania została stworzona przez Ifko[nator] i pochodzi z moda "Object-Info"! Dziękuję za pozwolenie na użycie jej tutaj)!
 Czas trwania konserwacji + dodane godziny pracy silnika (dni dostosowują się z seasons-mod): 1h konserwacji (+3 godziny pracy silnika, +1 dzień), 4h konserwacji (+9 godzin pracy silnika, +5 dni), 8h konserwacji (+18 godzin pracy silnika, +12 dni), 24h konserwacji (+35 godzin pracy silnika, +36 dni), 48h konserwacji (+48 godzin pracy silnika, +45 dni)
 
 --- Pełna obsługa trybu multiplayer
 !-!-!-!  KONTAKT/SUPPORT / "Chciałbym mieć wersję bez konserwacji na dni": ExtendedVehicleMaintenance@gmail.com
 
 Changelog Wersja 1.0.0.1:
-- Opis dostosowany
-- Nowa ikona
-- Limit dzienny dostosowany do Seasons-Mod
-- Silnik może się nie uruchomić, gdy uruchamiamy silnik po osiągnięciu limitu
-- Silnik może się zaciąć, jeśli obciążenie silnika jest zbyt duże
-- Naprawiono błędy podczas kilkukrotnego serwisowania
-- Nie odejmuje już godzin pracy silnika i wieku przy pierwszym załadunku
-- Naprawiono błąd z "modem zakupu hurtowego" (nie można było kupić palety)
-- Naprawiono problemy z grą wieloosobową
+- Opis dostosowany.
+- Nowa ikona.
+- Limit dzienny dostosowany do Seasons-Mod.
+- Silnik może się nie uruchomić, gdy uruchamiamy silnik po osiągnięciu limitu.
+- Silnik może się zaciąć, jeśli obciążenie silnika jest zbyt duże.
+- Naprawiono błędy podczas kilkukrotnego serwisowania.
+- Nie odejmuje już godzin pracy silnika i wieku przy pierwszym załadunku.
+- Naprawiono błąd z "modem zakupu hurtowego" (nie można było kupić palety).
+- Naprawiono problemy z grą wieloosobową.
 
 
 Changelog Wersja 1.0.0.2:
-- Naprawiono problemy z FPS
-- Naprawiono problemy z serwerem dedykowanym
-- Usunięto światło lampy
-- Opis został nieznacznie zmieniony
-- Naprawiono błąd powodujący, że przycisk nie pojawiał się
-- Naprawiono błąd powodujący, że stary stan pojazdu nie był przywracany
+- Naprawiono problemy z FPS.
+- Naprawiono problemy z serwerem dedykowanym.
+- Usunięto światło lampy.
+- Opis został nieznacznie zmieniony.
+- Naprawiono błąd powodujący, że przycisk nie pojawiał się.
+- Naprawiono błąd powodujący, że stary stan pojazdu nie był przywracany.
 
 
 Changelog Wersja 1.0.0.3:
 - Opis dostosowany.
 - Naprawiono błąd, w którym przycisk nadal nie pojawiał się.
-- Pozostały czas potrzebny na konserwację jest teraz zapisywany i kontynuowany przy ponownym wejściu do savegame
-- Konserwacja może być teraz wykonana w dowolnym momencie
-- Konserwacja jest teraz konieczna tylko 1 raz na sezon z modyfikacją Seasons-Mod
-- W palecie można teraz ustawić, jak długo ma trwać konserwacja. (Krótszy czas = wyższe koszty konserwacji)
-- Konserwacja kosztuje teraz określoną kwotę
-- System uszkodzeń z Fs19 dostosowuje się teraz do konserwacji
+- Pozostały czas potrzebny na konserwację jest teraz zapisywany i kontynuowany przy ponownym wejściu do savegame.
+- Konserwacja może być teraz wykonana w dowolnym momencie.
+- Konserwacja jest teraz konieczna tylko 1 raz na sezon z modyfikacją Seasons-Mod.
+- W palecie można teraz ustawić, jak długo ma trwać konserwacja. (Krótszy czas = wyższe koszty konserwacji).
+- Konserwacja kosztuje teraz określoną kwotę.
+- System uszkodzeń z Fs19 dostosowuje się teraz do konserwacji.
 
 
 Changelog Wersja 1.0.0.4:
-- Opis nieznacznie dostosowany
-- Naprawiono błąd z maszynami, które nie mają silnika (na przykład: przenośnik taśmowy)
-- Dodano tłumaczenie dla konfiguracji
+- Opis nieznacznie dostosowany.
+- Naprawiono błąd z maszynami, które nie mają silnika (na przykład: przenośnik taśmowy).
+- Dodano tłumaczenie dla konfiguracji.
 
 
 Changelog Wersja 1.0.0.5:
 - Pojazd nie musi już być wybrany, aby zobaczyć informacje o konserwacji i serwisować pojazd.
-- Silnik ponownie wyłącza się poprawnie, jeśli obciążenie silnika jest zbyt duże i wybrano inne narzędzie niż aktualny pojazd
-- Naprawiono problemy z synchronizacją w trybie multiplayer
-- Naprawiono problemy z pieniędzmi dla wielu graczy
-- Naprawiono problemy z Dedi
+- Silnik ponownie wyłącza się poprawnie, jeśli obciążenie silnika jest zbyt duże i wybrano inne narzędzie niż aktualny pojazd.
+- Naprawiono problemy z synchronizacją w trybie multiplayer.
+- Naprawiono problemy z pieniędzmi dla wielu graczy.
+- Naprawiono problemy z Dedi.
 - Cały sprzęt (oprócz nadającego się do jazdy) może być teraz normalnie naprawiany.
 - Pojazdy nadające się do jazdy nie mogą być już w ogóle normalnie naprawiane.
-- Dodano tekst migający podczas serwisowania
-- Uszkodzenia działają teraz poprawnie w połączeniu z modem Seasons
-- Godziny pracy silnika są teraz liczone jako "konserwacja uszkodzeń", a dni jako "konserwacja okresowa" -- (uszkodzenia dostosowują się tylko do godzin pracy silnika)
-- Silnik nie może być teraz w ogóle uruchomiony podczas konserwacji 
+- Dodano tekst migający podczas serwisowania.
+- Uszkodzenia działają teraz poprawnie w połączeniu z modem Seasons.
+- Godziny pracy silnika są teraz liczone jako "konserwacja uszkodzeń", a dni jako "konserwacja okresowa" -- (uszkodzenia dostosowują się tylko do godzin pracy silnika).
+- Silnik nie może być teraz w ogóle uruchomiony podczas konserwacji.
 
 
 Changelog Wersja 1.0.0.6:
-- Okno potwierdzenia dla konserwacji
+- Okno potwierdzenia dla konserwacji.
 - Uszkodzenia nie są już odliczane bezpośrednio (z Seasons-Mod) dla pojazdów, które mają już godziny pracy silnika (pojazdy pożyczone z kontraktu), ale uruchamiają się ponownie zgodnie z przeznaczeniem bez uszkodzeń.
-- Nie pojawia się już komunikat o błędzie, który pojawiał się, gdy sprzedano coś, co nie było pojazdem
-- Indywidualne dopasowanie ceny przeglądów dla każdego pojazdu
-- Krótsze przeglądy kosztują teraz mniej, a dłuższe więcej
-- W zależności od długości przeglądu, do pozostałych dodaje się określoną ilość motogodzin/dni (pojazd nie będzie całkowicie naprawiony)
-- System konserwacji został ogólnie poprawiony, aby był bardziej realistyczny
-- Dostosowano opis
-- Dostosowano teksty w grze
-- Funkcja naprawy w sklepie została całkowicie wyłączona z powodu błędów (również dla sprzętu nie nadającego się do jazdy)
-- Automatyczny start silnika może być ponownie aktywowany (funkcja przeciągnięcia silnika jest jednak nieaktywna)
+- Nie pojawia się już komunikat o błędzie, który pojawiał się, gdy sprzedano coś, co nie było pojazdem.
+- Indywidualne dopasowanie ceny przeglądów dla każdego pojazdu.
+- Krótsze przeglądy kosztują teraz mniej, a dłuższe więcej.
+- W zależności od długości przeglądu, do pozostałych dodaje się określoną ilość motogodzin/dni (pojazd nie będzie całkowicie naprawiony).
+- System konserwacji został ogólnie poprawiony, aby był bardziej realistyczny.
+- Dostosowano opis.
+- Dostosowano teksty w grze.
+- Funkcja naprawy w sklepie została całkowicie wyłączona z powodu błędów (również dla sprzętu nie nadającego się do jazdy).
+- Automatyczny start silnika może być ponownie aktywowany (funkcja przeciągnięcia silnika jest jednak nieaktywna).
 
 
 Changelog Wersja 1.0.0.7:
 - Naprawiono błąd, który powodował, że po konserwacji nic się nie działo (nadal "wymagana konserwacja" lub ta sama liczba pozostałych godzin/dni pracy silnika).
 
 
-Pomysły, które mogą być zawarte w następnej aktualizacji (jak i czy będą zawarte nie jest pewne):
-- Dostosowanie palet, aby lepiej odróżniały się od siebie (proszę wysyłać pomysły na adres ExtendedVehicleMaintenance@gmail.com).
-- Inne małe sztuczki
+Changelog Wersja 1.0.0.8:
+- Opis nieznacznie dostosowany.
+- Tekst pojawiający się przy zbliżaniu się do palety (pieszo), który lepiej informuje o skonfigurowanym czasie oczekiwania/dodatkowych dniach/dodatkowych godzinach pracy silnika do następnego przeglądu i ułatwia identyfikację właściwej palety.
+- Dodano polskie tłumaczenie.
     ]]>	
 	</pl>
     </description>
     <author>Frvetz</author>
-    <version>1.0.0.7</version>
+    <version>1.0.0.8</version>
     <iconFilename>icon.dds</iconFilename>
     <multiplayer supported="true"/>
     <extraSourceFiles>
